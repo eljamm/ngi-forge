@@ -95,7 +95,8 @@
     scope = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
-      example = lib.literalExpression ''[ "ocamlPackages" ]'';
+      description = "The scope for the application to allow the forge to categorise it.";
+      example = lib.literalExpression ''[ "ocamlApps" "coolOcamlApps" ] # Scopes as apps.ocamlApps.coolOcamlApps.appName'';
       internal = true;
     };
     data = lib.mkOption {

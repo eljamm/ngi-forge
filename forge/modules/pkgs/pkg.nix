@@ -89,7 +89,8 @@
     scope = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       default = [ ];
-      example = lib.literalExpression ''[ "ocamlPackages" ]'';
+      description = "The scope for the package to allow the forge to categorise it.";
+      example = lib.literalExpression ''[ "ocamlPackages" "coolOcamlPackages" ] # Scopes as pkgs.ocamlPackages.coolOcamlPackages.pkgName'';
       internal = true;
     };
     broken = lib.mkOption {
