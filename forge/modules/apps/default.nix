@@ -114,7 +114,17 @@
           );
         };
 
-      bundledApps = lib.mapAttrs (appName: app: shellBundle app) config.forge.apps;
+      bundledApps = lib.attrsets.foldlAttrs (
+        acc: name: value:
+        assert
+          !(lib.attrsets.hasAttrByPath (lib.concat value.scope [ name ]) acc)
+          || throw "Application could not be evaluated at \"apps.${
+            lib.strings.join "." (lib.concat value.scope [ name ])
+          }\" as that path is already contained in apps. This is likely due to the name of a scope overlapping with the name of an application within the same scope.";
+        lib.attrsets.recursiveUpdate acc (
+          lib.attrsets.setAttrByPath value.scope { ${name} = shellBundle value; }
+        )
+      ) { } config.forge.apps;
       packagesWithNamespace = pkgs.callPackage (forge-lib.flakePackagesWithNamespace {
         namespace = "apps";
         derivations = bundledApps;
