@@ -58,7 +58,10 @@
       packages = lib.attrsets.foldlAttrs (
         acc: name: value:
         assert
-          !(lib.attrsets.hasAttrByPath (lib.concat value.scope [ name ]) acc)
+          (
+            !(lib.attrsets.hasAttrByPath (value.scope ++ [ name ]) acc)
+            || (lib.attrsets.hasAttrByPath (value.scope ++ [ name ] ++ [ "_recipeType" ]) acc)
+          )
           || throw "Package could not be evaluated at \"pkgs.${
             lib.strings.join "." (lib.concat value.scope [ name ])
           }\" as that path is already contained in pkgs. This is likely due to the name of a scope overlapping with the name of a package within the same scope.";

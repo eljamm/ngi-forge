@@ -117,7 +117,10 @@
       bundledApps = lib.attrsets.foldlAttrs (
         acc: name: value:
         assert
-          !(lib.attrsets.hasAttrByPath (lib.concat value.scope [ name ]) acc)
+          (
+            !(lib.attrsets.hasAttrByPath (value.scope ++ [ name ]) acc)
+            || (lib.attrsets.hasAttrByPath (value.scope ++ [ name ] ++ [ "_recipeType" ]) acc)
+          )
           || throw "Application could not be evaluated at \"apps.${
             lib.strings.join "." (lib.concat value.scope [ name ])
           }\" as that path is already contained in apps. This is likely due to the name of a scope overlapping with the name of an application within the same scope.";
