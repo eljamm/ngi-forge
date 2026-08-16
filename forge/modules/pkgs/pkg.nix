@@ -86,6 +86,12 @@
       '';
       example = lib.literalExpression "with lib.maintainers; [ ngi-nix ]";
     };
+    scope = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      example = lib.literalExpression ''[ "ocamlPackages" ]'';
+      internal = true;
+    };
     broken = lib.mkOption {
       type = lib.types.bool;
       default = false;

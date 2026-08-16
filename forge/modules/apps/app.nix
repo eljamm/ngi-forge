@@ -92,6 +92,12 @@
       '';
       example = lib.literalExpression "with lib.maintainers; [ ngi-nix ]";
     };
+    scope = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      example = lib.literalExpression ''[ "ocamlPackages" ]'';
+      internal = true;
+    };
 
     # Portable services configuration
     # https://nixos.org/manual/nixos/unstable/#modular-services
