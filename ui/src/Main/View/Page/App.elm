@@ -246,7 +246,7 @@ viewPageAppConfiguration _ pageApp =
             (listAppRuntimeAvailable pageApp.pageApp_app
                 |> List.map
                     (\r ->
-                        span [ class "badge bg-primary me-1", style "font-size" "0.85em" ]
+                        span [ class "badge rounded-pill bg-primary-subtle text-primary-emphasis border border-primary-subtle me-1" ]
                             [ text (showAppRuntime r |> String.toLower) ]
                     )
             )

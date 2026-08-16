@@ -82,12 +82,16 @@ Start the package recipe with the following content:
     homePage = "https://project-website.org";
     mainProgram = "executable-name";
     license = lib.licenses.gpl3Only;
-  };
 
-  # More configuration to be added here.
-  # ...
+    # More configuration to be added here.
+    # ...
+  };
 }
 ```
+
+::: {important}
+Ensure that the remainder of the package recipe is done within the `pkgs.package-name` block to avoid nasty infinite recursion errors.
+:::
 
 ::: {note}
 Use the following command to get the list of all available licenses:

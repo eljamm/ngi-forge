@@ -96,7 +96,7 @@ viewPagePkgsItem model pagePkgs pkg =
                 ]
             , pkg.pkg_description |> Markdown.render
             ]
-        , div [ class "d-flex gap-3" ]
+        , div [ class "d-flex flex-wrap gap-3" ]
             (List.append
                 (pkg.pkg_licenses |> List.map viewLicense)
                 [ a

@@ -97,6 +97,49 @@
       default = [ ];
       example = lib.literalExpression ''[ "ocamlPackages" ]'';
       internal = true;
+    data = lib.mkOption {
+      description = ''
+        Data to be re-used in an application.
+
+        Each entry can either be a path to an existing file, or a literal
+        string, which are both normalized into a `{ name, content, path }`
+        attribute set.
+
+        Note that `path` is `null` for strings.
+      '';
+      default = { };
+      example = lib.literalExpression ''
+        {
+          configFile = ./app.conf;
+          greetingMessage = "hello world";
+          testFile = {
+            name = "my-test-file.txt";
+            path = ./test/file.txt;
+          };
+        }
+      '';
+      type =
+        let
+          atomType = lib.types.either lib.types.path lib.types.str;
+
+          toDataItem =
+            value:
+            if lib.isString value then
+              {
+                content = value;
+              }
+            else if lib.isPath value then
+              {
+                name = lib.baseNameOf value;
+                path = value;
+              }
+            else
+              # custom attribute set
+              value;
+
+          dataItemType = lib.types.coercedTo atomType toDataItem (lib.types.submodule ./data-item.nix);
+        in
+        lib.types.attrsOf dataItemType;
     };
 
     # Portable services configuration

@@ -53,12 +53,16 @@ Start the recipe with the following content:
       echo "with syntax highlighting"
       ```
     '';
-  };
 
-  # More configuration to be added here.
-  # ...
+    # More configuration to be added here.
+    # ...
+  };
 }
 ````
+
+::: {important}
+Ensure that the remainder of the application recipe is done within the `apps.app-name` block to avoid nasty infinite recursion errors.
+:::
 
 ### Links
 
@@ -562,6 +566,24 @@ Run service test:
 nix build .#apps.<app-name>.test-services-container --print-build-logs
 nix build .#apps.<app-name>.test-services-nixos --print-build-logs
 ```
+
+## Re-exporting packages
+
+If exposing a package already in nixpkgs, consider re-exporting the package using the new [`build.identityBuilder`](https://ngi.nixos.org/recipe/options?p=apps&p=pkgs&q=identi#pkgs.%3Cname%3E.build.identityBuilder.enable). This will allow the application to be accessed under the `pkgs` attribute path (i.e. `pkgs.<app-name>`). To do this, outside of the `apps.<app-name>` attribute set, add the following block:
+
+```nix
+pkgs.<app-name> = {
+  build.identityBuilder = {
+    enable = true;
+    derivation = pkgs.pkgsOriginal.<app-name>;
+  };
+};
+```
+
+::: {note}
+`pkgs.pkgsOriginal` will always provide packages from the original source of the `pkgs` attribute set (nixpkgs in almost in all cases).
+This is to clearly differentiate between packages provided in the forge (in `recipes/pkgs`), and packages from the original `pkgs`.
+:::
 
 ## Examples
 

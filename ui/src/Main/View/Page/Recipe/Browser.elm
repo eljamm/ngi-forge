@@ -34,9 +34,10 @@ viewPageRecipeOptionsBrowser _ page =
     page.pageRecipeOptions_trees
         |> List.map (viewNodes page initInh)
         |> nav
-            [ style "border" "1px solid var(--bs-border-color)"
+            [ style "border" "1px solid transparent"
             , style "border-radius" "6px"
             , style "padding" "1em .5em 1em 0"
+            , class "overflow-x-auto mb-4 m-sidebar"
             ]
 
 
