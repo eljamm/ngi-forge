@@ -97,6 +97,7 @@
       default = [ ];
       example = lib.literalExpression ''[ "ocamlPackages" ]'';
       internal = true;
+    };
     data = lib.mkOption {
       description = ''
         Data to be re-used in an application.
