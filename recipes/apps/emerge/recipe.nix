@@ -5,12 +5,12 @@
   ...
 }:
 
-# let
-#   pyEnv = pkgs.python3.withPackages (ps: [ pkgs.forgePkgs.python3.emerge ]);
-# in
+let
+  pyEnv = pkgs.python3.withPackages (ps: [ pkgs."python3.emerge" ]);
+in
 
 {
-  apps.emerge = lib.trace (lib.attrNames pkgs.forgePkgs) {
+  apps.emerge = {
     displayName = "EMerge";
     description = "Electromagnetic field computation program.";
     usage = ''
@@ -59,8 +59,8 @@
     programs = {
       mainPackage = pkgs.emerge;
       packages = with pkgs; [
-        # emerge
-        # pyEnv
+        emerge
+        pyEnv
       ];
 
       runtimes = {
@@ -82,9 +82,4 @@
       '';
     };
   };
-
-  # pkgs.emerge.build.identityBuilder = {
-  #   enable = true;
-  #   derivation = pkgs.python3Packages.toPythonApplication pkgs.forgePkgs.python3.emerge;
-  # };
 }
