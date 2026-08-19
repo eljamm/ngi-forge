@@ -13,11 +13,27 @@
       { namespace, derivations }:
       { linkFarm, stdenv }:
       let
-        bundle = linkFarm namespace (
-          lib.mapAttrsToList (name: path: {
-            inherit name path;
-          }) derivations
-        );
+        # Take an attrset of arbitrary nesting and make it flat
+        # by concatenating the nested names with the given separator.
+        flattenAttrs =
+          separator:
+          let
+            f = path: lib.concatMapAttrs (flatten path);
+            flatten =
+              path: name: value:
+              if (lib.isAttrs value) && (!lib.isDerivation value) then
+                f (path + name + separator) value
+              else
+                { ${path + name} = value; };
+          in
+          f "";
+
+        # Flakes don't accept attribute sets, so here we recursively collect
+        # derivation leaves along with their dotted names, so that nested
+        # scopes (e.g. `pkgs.python3.emerge`) can be exported.
+        leaves = flattenAttrs "." derivations;
+
+        bundle = linkFarm namespace leaves;
       in
       {
         packages = {
@@ -28,7 +44,7 @@
             inherit (stdenv.hostPlatform) system;
           };
         }
-        // lib.mapAttrs' (name: lib.nameValuePair "${namespace}.${name}") derivations;
+        // lib.mapAttrs' (name: lib.nameValuePair "${namespace}.${name}") leaves;
 
         legacyPackages = {
           # Tip(debugging): use this when not using the Flake setup (`nix repl -f.`)
