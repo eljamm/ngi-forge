@@ -21,9 +21,13 @@
         inherit forge-lib;
         pkgs = pkgs.extend (
           finalPkgs: previousPkgs:
+          let
+            forgePkgs = lib.mapAttrs (_packageName: package: package.result.derivation) config.forge.pkgs;
+          in
           # Extend `pkgs` with the packages from the forge.
-          lib.mapAttrs (packageName: package: package.result.derivation) config.forge.pkgs
+          forgePkgs
           // {
+            inherit forgePkgs;
             # `pkgs.pkgsOriginal` provides packages from the original `pkgs` (usually from Nixpkgs)
             # Eg. `pkgs.pkgsOriginal.offen` (Nixpkgs) and `pkgs.offen` (ngi-forge).
             # Note that as a consequence, all dependencies of those packages
