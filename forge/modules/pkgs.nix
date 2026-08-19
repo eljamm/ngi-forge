@@ -57,18 +57,36 @@
 
       packages = lib.attrsets.foldlAttrs (
         acc: name: value:
-        assert
-          (
-            !(lib.attrsets.hasAttrByPath (value.scope ++ [ name ]) acc)
-            || (lib.attrsets.hasAttrByPath (value.scope ++ [ name ] ++ [ "_recipeType" ]) acc)
-          )
-          || throw "Package could not be evaluated at \"pkgs.${
-            lib.strings.join "." (lib.concat value.scope [ name ])
-          }\" as that path is already contained in pkgs. This is likely due to the name of a scope overlapping with the name of a package within the same scope.";
-        lib.attrsets.recursiveUpdate acc (
-          lib.attrsets.setAttrByPath value.scope { ${name} = value.result.derivation; }
-        )
+        let
+          path = lib.splitString "." name;
+
+          # Recursively check that `path` is available in `tree`, i.e. that no
+          # derivation already sits at or above the target location (a package
+          # name cannot also be used as a scope).
+          pathIsAvailable =
+            path: tree:
+            let
+              nodeIsAvailable = parts: node: !(lib.hasAttr (lib.head parts) node);
+
+              walk =
+                parts: node:
+                if lib.isDerivation node then
+                  false
+                else if parts == [ ] || nodeIsAvailable parts node then
+                  true
+                else
+                  walk (lib.tail parts) node.${lib.head parts};
+            in
+            walk path tree;
+
+          throwOverlap = throw "Package could not be evaluated at \"pkgs.${name}\" as that path is already contained in pkgs. This is likely due to a package name overlapping with the name of a scope.";
+
+          scopedPkg = lib.attrsets.setAttrByPath path value.result.derivation;
+        in
+        assert (pathIsAvailable path acc) || throwOverlap;
+        lib.attrsets.recursiveUpdate acc scopedPkg
       ) { } config.forge.pkgs;
+
       packagesWithNamespace = pkgs.callPackage (forge-lib.flakePackagesWithNamespace {
         namespace = "pkgs";
         derivations = packages;

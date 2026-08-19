@@ -21,7 +21,11 @@
   options = {
     pname = lib.mkOption {
       type = lib.types.strMatching "^[a-zA-Z0-9-]+$";
-      default = name;
+      default = lib.pipe name [
+        # remove scope from name, if it exists
+        (lib.splitString ".")
+        (lib.last)
+      ];
       description = "Package name. Only letters, numbers and hyphens are allowed.";
       example = "pkgs.hello";
       readOnly = true;
@@ -85,13 +89,6 @@
         maintainer defined in `maintainers/maintainer-list.nix` file.
       '';
       example = lib.literalExpression "with lib.maintainers; [ ngi-nix ]";
-    };
-    scope = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = [ ];
-      description = "The scope for the package to allow the forge to categorise it.";
-      example = lib.literalExpression ''[ "ocamlPackages" "coolOcamlPackages" ] # Scopes as pkgs.ocamlPackages.coolOcamlPackages.pkgName'';
-      internal = true;
     };
     broken = lib.mkOption {
       type = lib.types.bool;

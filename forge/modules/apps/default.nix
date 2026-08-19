@@ -116,18 +116,36 @@
 
       bundledApps = lib.attrsets.foldlAttrs (
         acc: name: value:
-        assert
-          (
-            !(lib.attrsets.hasAttrByPath (value.scope ++ [ name ]) acc)
-            || (lib.attrsets.hasAttrByPath (value.scope ++ [ name ] ++ [ "_recipeType" ]) acc)
-          )
-          || throw "Application could not be evaluated at \"apps.${
-            lib.strings.join "." (lib.concat value.scope [ name ])
-          }\" as that path is already contained in apps. This is likely due to the name of a scope overlapping with the name of an application within the same scope.";
-        lib.attrsets.recursiveUpdate acc (
-          lib.attrsets.setAttrByPath value.scope { ${name} = shellBundle value; }
-        )
+        let
+          path = lib.splitString "." name;
+
+          # Recursively check that `path` is available in `tree`, i.e. that no
+          # derivation already sits at or above the target location (an
+          # application name cannot also be used as a scope).
+          pathIsAvailable =
+            path: tree:
+            let
+              nodeIsAvailable = parts: node: !(lib.hasAttr (lib.head parts) node);
+
+              walk =
+                parts: node:
+                if lib.isDerivation node then
+                  false
+                else if parts == [ ] || nodeIsAvailable parts node then
+                  true
+                else
+                  walk (lib.tail parts) node.${lib.head parts};
+            in
+            walk path tree;
+
+          throwOverlap = throw "Application could not be evaluated at \"apps.${name}\" as that path is already contained in apps. This is likely due to an application name overlapping with the name of a scope.";
+
+          scopedApp = lib.attrsets.setAttrByPath path (shellBundle value);
+        in
+        assert (pathIsAvailable path acc) || throwOverlap;
+        lib.attrsets.recursiveUpdate acc scopedApp
       ) { } config.forge.apps;
+
       packagesWithNamespace = pkgs.callPackage (forge-lib.flakePackagesWithNamespace {
         namespace = "apps";
         derivations = bundledApps;
