@@ -15,7 +15,8 @@ jobs:
     # if: github.repository_owner == 'ngi-nix'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -27,7 +28,6 @@ jobs:
         id: git-cliff
         with:
           version: latest
-          config: cliff.toml
           args: --verbose
           github_token: ${{ secrets.FLAKE_UPDATE }}
         env:
