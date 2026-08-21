@@ -1,0 +1,1212 @@
+## [unreleased]
+
+### 🚀 Features
+
+- *(dev)* Skip querying devshell from substituters
+- *(dev)* Add elm2nix in the devshell
+- *(dev)* Add spa routing capability to esbuild builds
+- *(ci)* Allow spa deployment of elm app in github pages
+- *(ui)* Use markdown for usage instructions
+- *(ui)* Fix site layout
+- *(ui)* Add new state for modal and tab switch
+- *(ui)* Add a modal and run button
+- Init modular services
+- Init nimi
+- Init container config
+- Init new NixOS options
+- Customize container name and tag
+- Customize oci image config
+- Ignore oci artifact files
+- Add nimi to template
+- Construct appsFilter from forge options
+- Add composeFile option to container
+- Move build-oci script to `result/bin`; add compose file
+- *(ui)* Include bootstrap bundle js for Modal interaction
+- *(ui)* Dismiss modal as expected
+- *(ui)* Copy buttons for markdown usage instructions
+- *(ui)* Add build commit in footer
+- *(ui)* Search by description and case insensitive matches
+- Construct packagesFilter from forge options
+- Use modular service for python-web app
+- Use modular service for hello app
+- Init Rust builder
+- Package tau-radio and tau-tower
+- Add license option for package recipes
+- Add more package builder conditions
+- Expose environment variables from modular services
+- Use modular service env vars in nixos and container
+- Use env var in hello app
+- *(ui)* Add elm/svg dependency and icons
+- *(ui)* Them switcher elm data cycle
+- *(ui)* Add a themeswitch view
+- *(ui)* Ambient type to search
+- *(ui)* Add nix installer instructions
+- *(cd)* Allow deploying in arbitrary sub route
+- Add grants option to apps
+- Add packages option to apps
+- *(ui)* Add link in ui for options
+- Compose recipes using the module system
+- *(dev)* Add shfmt to treefmt
+- Add codeberg git fetcher
+- Introduce git fetcher schemas
+- Add gitea/forgejo git fetchers
+- *(ui)* Add svg favicon
+- *(dev)* Allow command/default.nix in devshell
+- *(uitests)* Add script to generate mock backend data
+- *(ui)* Have a mobile friendly navbar
+- *(ui)* Treat flakes a preference
+- *(ui)* Add flakes and non flakes switcher
+- *(ui)* Add ngi atrributes and links
+- *(ui)* Add route to model so components can refer to their urls
+- *(ui)* Focus permalink elements
+- *(ui)* Recipe/options handle focus consistently
+- Add startup script option to container
+- Add startup script option to nixos
+- Add links to apps
+- Package helium
+- Add fetchgit support
+- *(ui)* Remove -app suffix in urls and in ui
+- *(ui)* Handle showing links
+- Add app icon option and ui integration
+- *(dev)* Rewrite app icons build script in python
+- Make app recipes overridable
+- *(ui)* Deploy previews via github actions and netlify
+- *(ui)* Search by description across packages and options
+- *(ui)* Prefetch json for browsers that support it
+- *(ci)* Improve deploy preview feature
+- Add aerogramme package
+- *(ui)* Add license to package information
+- Add tau app
+- *(ui)* Add pagination to apps
+- Add source.submodules option
+- Add displayName configuration option for apps
+- *(ui)* Use displayName for app title
+- Add extendRecipe to apps
+- Init consumer flake template
+- Add forge consumer module
+- Add preStart option to nimi services
+- *(ui-tests)* Initialize playwright e2e test suite
+- *(dev)* Improve mock forge config generation for e2e tests
+- *(ui-tests)* Add tests for layout and basic navigation
+- *(ui-tests)* Add app details and run modal tests
+- *(ui-tests)* Add tests for packages and recipe options
+- *(ui-tests)* Add tests for search and keyboard shortcuts
+- *(ui-tests)* Add tests for permalinks and highlight animation
+- *(ci)* Run formatting checks
+- Add packages.build, run and check options for python builders
+- Add app nixos module passthru
+- Relocate compose file to result/<appname>/compose.yaml
+- *(ui)* Handle responsive layout for options filters
+- *(ui)* Handle tree nodes indentation for small screens
+- Add npm package builder
+- Add pagedjs-cli package
+- Add apps.*.services.runtimes#apps.*.services.runtimes.nixos.packages option
+- Use default app composeFile if not set
+- Add tests for application containers
+- Add pnpmPackageBuilder
+- *(ui)* Handle multiple licenses
+- Add option to customise stdenv in standardBuilder
+- Add service shell
+- *(dev)* Log errors properly in mock-forge-config
+- Add a main command for containers
+- Add dive to devshell
+- *(deploy)* Deploy netlify previews in a subroute
+- Add qlever packages
+- Add qlever-ui pacakge
+- Add qlever app
+- Pass entropy from host to NixOS VMs
+- Include ports configuration in default compose file
+- Expose nixosModules for apps
+- *(ui)* Show list of runtimes in left panel
+- *(ui)* Add list of ports to the app details
+- *(ci)* Build ui without depending on tests
+- *(ui)* Add permalink for configuration
+- *(ui)* Add instruction for adding app module to nixos config
+- Add runtimes.program
+- *(ui)* Add program runtime
+- *(ui)* Use NGI Zero hex icon as default
+- *(ui)* Show branches before leaves in options tree
+- Build individual container for each service
+- Add per-service ports
+- Migrate all apps' ports to per-service
+- Add highlight-js package
+- *(ui)* Add language highlight in codeblocks
+- Add after option for service ordering
+- Init {py-,}arwen packages at 0.0.5-unstable-2026-04-07
+- Init arwen app
+- *(ui)* Bundle js files into one
+- Init vg at 1.74.0
+- Init vg-app
+- *(ui)* Ask for feedback
+- Create managed unprivileged service user
+- Add apps.*.services.components.stateDir option
+- Build all Go subpackages by default
+- Add apps.*.services.components.*.packages option
+- Add dutctl package and app
+- *(ui)* Redirect NGIpkgs URLs to ngi-nix.github.io/ngipkgs
+- Implement bublewrapped service shell runner
+- Add test.programs and test.services
+- *(recipes)* Use scoped test scripts
+- Use XDG_CACHE_HOME for run-container
+- Allow configuring test machine config
+- Add maintainer option to packages and apps
+- *(mox-app)* Add ngi team as maintainer
+- Add recipePath
+- Add forge-update script for updating package recipes (#617)
+- Add _forge-report package (#606)
+- Add calendula 0.1.0 package recipe (#641)
+- Add cardamum 0.1.0 package recipe (#640)
+- Allow to add resources to service components
+- Cache all container images permanently
+- Be less verbose when loading a container image
+- *(ui)* Show components and resources in app details page
+- *(ui)* Show programs in app details
+- Add role option to service component resources
+- Remove orphan containers when running podman compose
+- Add type label to container images
+- Add app prefix to container image
+- *(ui)* Support alert blocks in usage instructions
+- Add healthcheck for service components and resources
+- Add forge labels to podman images
+- *(ui)* Sort apps by displayName
+- Add broken option to pkgs/apps; filter out broken
+- Expose packages corresponding to existing apps
+- Ocaml builder
+- Add option to configure app data
+- Add option to configure app data (#863)
+- Add test for app cards responsiveness
+- Add contrast tests to ui tests
+- *(ui)* Open markdown links in new tab
+- *(ui)* Bug fixes and minor improvements (#872)
+- *(ui)* Make card text selectable without losing clickability
+- *(ui)* Cards changes (#882)
+- *(ui)* Add clickable icon modal to app details page
+- *(ui)* App icons modal (#883)
+- Allow string content to be accessible via path
+- Allow string content to be accessible via path (#870)
+- *(ui)* Generate initials avatars for apps missing icons (#658)
+- Merge all app package inputs and expose them
+- Init developer template
+- Init developer template  (#771)
+- *(ci)* Add git-pages powered deploy previews
+- *(ci)* Add git-pages powered deploy previews (#900)
+- *(ui)* Add hover tooltips to runtime badges
+- *(ui)* Add documentation link for runtimes in run modal
+- *(ui)* Dynamic search bar expansion on mobile
+- *(ui)* Style tooltips for better readability
+- *(ui)* Add hover tooltips to runtime badges (#902)
+
+### 🐛 Bug Fixes
+
+- Exclude non-recipe files when loading recipes
+- *(dev)* Add missing watchman dev tool
+- *(ui)* Use absolute url paths always
+- *(ui)* Re-generate elm lockfile
+- *(ui)* Add symlink to allow consistent behavior in dev and prod
+- *(ci)* Switch to cachix/install-nix-action
+- *(ci)* Setup cachix for ui cache
+- *(ui)* Switch to absolute url to allow url routing
+- *(dev)* Fix command name
+- *(dev)* Enable elm-test
+- *(ui)* Disable scroll inside the modal
+- *(ui)* Remove the usage instructions from app page
+- *(ui)* Fix main link
+- Nix-forge -> ngi-nix-forge
+- *(forge)* Containers -> container in appsFilter
+- *(ui)* Oci -> vm
+- *(ui)* Use Instructions
+- *(ui)* Improve copy feedback
+- Pass inputs to the entire flake module
+- Pass inputs to optionsDoc eval
+- Use current fork in template
+- Container passthru name in flake checks
+- Move esbuild port to 3000
+- Add podman-compose to devshell
+- Api -> python-web for python-web-app
+- Remove imageConfig.CMD for python-web-app
+- *(ui)* Usage instructions for containers
+- *(ui)* Fix incorrect default route
+- *(dev)* Regenerate elm lock via elm2nix
+- *(ui)* Re-use Instructions view
+- *(ui)* AppInstructionsHtml -> viewInstructionsApp
+- *(ui)* Defer js assets in head tag
+- *(ui)* Use a proper css grid for displaying apps
+- *(ui)* Fix the instructions commands
+- *(ui)* Change default model_foucs to search
+- *(ui)* Fix main nav bar link
+- Use executable from modular service command
+- *(ui)* Move search bar to navbar
+- *(ui)* Re-wamp search bar with icon
+- *(ui)* Move recipe location
+- *(ui)* Fix gha search route 404
+- *(ui)* Add punctuation in footer
+- *(ui)* Disable ambient search when Run modal is shown
+- *(deploy)* Only insert baseUrl in deployment
+- *(ui)* Inconsitent nav bar icons
+- Ignore non-NixOS configData paths on NixOS
+- Don't warn missing hash when using path
+- *(dev)* Support fish shell with dev-ui
+- *(ui)* Strip out trailing slash in urls on inital page load
+- *(ui)* Nav icon in light mode
+- *(ui)* Use options route for packages link for now
+- *(ui)* Use replaceUrl to preserve url state
+- *(ui)* Add a smooth scrolling port for handling focus
+- *(ui)* Remove redundant name attribute in div
+- *(deploy)* Fix app pages
+- *(ui)* Fix app container load instructions
+- *(ui)* Fix app recipe link
+- *(ui)* Pin commit version for nix flake instructions
+- Add homePage in pkgMeta
+- *(dev)* Use writeShellApplication to provision runtime dependencies
+- *(dev)* Fix mock-forge-config command output
+- *(ui)* Handle theme switching
+- *(ui)* Fix default theme selection
+- Debug option in default.nix
+- Add all issues and prs to project via github actions
+- *(ui)* Re-add usage instructions
+- *(ui)* Fix app shell flag condition
+- *(ci)* Encode correct commit id as version
+- *(ui)* Fix packages pagination
+- *(ui)* Fix non-flake instructions for configuring substituters
+- *(ui)* Fix links opening in package details
+- *(ui)* Show placeholder icon to improve loading
+- *(ui)* Add fixed margin-top to footer
+- *(ui)* In pagination omit page 1 in urls
+- *(ui)* Hide pagination options for apps page for singe page
+- *(ui)* Lose focus on escape key
+- *(ui)* Show 12 entries per pagination
+- Convert service env vars to an attrs at callsite
+- Appy forwardPorts transformation at callsite
+- Add real recipe path in json config
+- Avoid conflicts with nimi service wrapper
+- *(ui)* Call nixos runtime correctly
+- Correctly set environment variables in NixOS service
+- Handle sourceRoot properly in pnpm builder
+- Disallow build phase for devenvs
+- *(uitests)* Add data-testid to app title
+- *(ui)* Nix installer instructions for flakes
+- *(ui)* Fix docs route in ui
+- Export apps and forgePkgs in default.nix
+- Set correct type for package mainProgram
+- *(dev-ui)* Fix script
+- Correct typos and improve descriptions in documentation and code comments
+- *(dev)* Use forge-ui for dev-ui-config
+- *(dev)* Use a single derivation for building _forge-ui-dev
+- Make setup service required by other services
+- *(ui)* Fix multi line examples rendering in the options browser
+- *(ui)* Fix missing application links
+- *(dev)* Copy the whole directory for dev-ui
+- *(pnpmPackageBuilder)* Add option to pin pnpm version
+- *(ui)* Fallback to default icon if icon fails to load
+- Don't allow host env variables to leak to bubblewrap service env
+- Fix Forge URL in packaging announcement output
+- Make app programs.mainPackage available in test
+- *(ui-tests)* Replace tree with blob
+- Introduce _forge in default.nix
+- Nix flake show missing entries
+- Oops, this should be app.services.resources
+- *(ui)* Don't show internal 'resources' option in the options browser
+- Remove redundant container resources options
+- *(ci)* Add scheduled update defaults
+- Update script recipes path
+- Update script package regex
+- *(ci)* Check for package namespace when updating
+- Get actual commit date for update script
+- Only update version when self-referencing
+- Don't use rec in `forge/modules/lib.nix`
+- *(ci)* Don't allow non-derivations in checks
+- *(ui)* Ambient key feature
+- Add formatter to consumer template
+- Support operating from Git linked worktrees
+- Set identityBuilder description with default priority
+- Correctly use forge-input in shell hook for builder debug mode
+- *(apps.labplot)* Remove xvfb-run to bypass Xvfb segfaults on buildbot
+- *(apps.labplot)* Remove xvfb-run to bypass Xvfb segfaults on buildbot (#871)
+- Allow nimi module eval with a workaround for process.flagFormat
+- *(apps.badkeys)* Disable tests due to upstream test failure
+- *(pkgs.kepler-formal)* Properly patch slang for fmt 12.2 compatibility
+- *(dev)* Be explicit about service units
+- *(ui)* Pad pagination on last page to prevent scroll jumping
+- *(ui)* Resolve all flexbox layout and option text wrapping overflows
+- *(ui)* Sort apps case-insensitively by displayName
+- *(ui)* Allow markdown links to reference local links
+- *(ui)* Allow markdown links to reference local links (#891)
+- *(ci)* Remove unused test job
+- *(ci)* Mark git-pages-cli as executable
+- *(ci)* Mark git-pages-cli as executable (#901)
+- *(ui)* Prevent horizontal scrollbar on the whole page
+
+### 💼 Other
+
+- Add bootstrap
+- Add header, search and footer
+- Rename Pkg to Package
+- Small tuning of header and footer
+- Move forge modules to forge dir
+- Add option to fetch source from GitHub
+- Update header and footer
+- Add instructions panel
+- Add usage instructions
+- Add some spaces to package recipes
+- Add package.test options
+- Prefix forge package with underscore
+- Add initial support for container images
+- Refactor
+- Move json decoder functions to separate file
+- Drop stupid string templating function
+- Update header
+- Change type of selectedPackage to Package
+- Update about text
+- Update header text
+- Update package usage instructions
+- Remove Search button
+- Update footer
+- Rename functions for json config parsing
+- Highlight selected package
+- Update initial instructions
+- Pass package to text functions
+- Add packages.mainProgram option
+- Add ui development environment
+- Nicer text functions templating
+- Move header title to texts
+- Small update of run in shell command instruction
+- Drop packages.nixpkgs configuration option
+- Move _forge packages to separate files
+- .gitignore update
+- Rename defaultBuilder to standardBuilder
+- Pretty forge-config.json file content
+- Add main.js to .gitignore
+- *(geos)* Build with ninja
+- Add plainBuilder option and example package
+- Update container image name
+- Set correct package version for container image
+- Rename packages directory to outputs
+- Avoid importing not needed elm functions
+- *(ui)* Update dev-help instructions
+- *(ui)* Update dev-help instructions
+- Rename packages module file
+- Move package recipes to packages directory
+- Move _forge-config package to forge/packages.nix
+- Add applications
+- Add extraDrvAttrs to standardBuilder
+- Rename config.Cmd to config.CMD in apps
+- Update forge-config.json
+- *(packages)* Update packages descriptions
+- Update html title
+- Implement search function
+- Drop 'nix run' instruction for packages
+- Add shell environment for apps
+- Add pythonAppBuilder builder
+- Add package option for enabling interactive debug build
+- Don't show mainProgram in package usage instructions
+- Redesign application programs and services
+- Small update in app instructions
+- Change type of apps composeFile to path
+- Update package image build command
+- *(packages)* Less example packages
+- Remove use of perSystem function in recipes
+- Run test for all packages containing test attribute
+- Add mypkgs alias to config.packages
+- Access app programs via passthru
+- *(apps)* Fix app directory names
+- Simplify packages and apps configuration
+- Add support for other git forges
+- Add vms for apps
+- Container options consolidation
+- Add vm output to apps instructions
+- Fix vm instruction in apps
+- Add package development environment
+- Make shell programs primary derivation for apps
+- Update package development environment instructions
+- Move home page link to package meta
+- Add badges to packages and apps
+- Fix perSystem usage in apps module
+- Format apps module
+- Fix perSystem usage in packages module
+- Fix apps module
+- Fix packages module
+- Format packages module
+- Add comment
+- Footer update
+- Add copy to clipboard button for all instructions
+- Rename Texts.elm to Instructions
+- Add options browser app
+- Change output of _forge-options package to json
+- Add proper badges for packages and apps
+- Shorter options names
+- Remove top level "packages" and "apps" option
+- Split options to toplevel and others
+- Make category buttons bigger
+- Add options.json
+- Update packaging
+- Update gitignore
+- Update link to new options browser
+- Simplify options decoder
+- Pretty options.json
+- Update dev instructions
+- Update code block style
+- Remove header
+- Remove empty first line in instructions code block
+- Use more contrast text color for code block
+- Fix instructions code indentation
+- Update page title
+- Add application usage
+- Darker code block borders
+- Fix permalinks
+- Fix permalinks
+- Remove obsolete modules documentation in html
+- Better grouping of options in browser
+- Show only first line of option description in browser
+- Fix json config decoder
+- Use nix-forge cachix binary substituter
+- Use live-server for development
+- Fix apps.name option default value
+- Fix package.source.git example value
+- Add new recipe builder functions
+- Add button to open new recipe builder
+- Use format function from Utils
+- Add option filters
+- Update app filter
+- Add button to copy option value from example
+- Add initial instructions
+- Update LLM instruction
+- Update LLM instruction
+- Update recipe style for packages
+- Move mypkgs to pkgs.mypkgs
+- Improve initial instructions
+- Improve instructions
+- Update default devenv shellHook message
+- Add options to set app vm memory and disk size
+- Move app VM memory and disk size configuration to vm.config
+- Add flake-module and default template
+- Add repositoryUrl configuration option
+- Add source.path option for local package source code
+- *(example)* Add ci workflows
+- Import our flake-module
+- Configure recipeDirs as strings and use them in ui
+- Rename recipes directory (outputs -> recipes)
+- Split builder modules to separate files
+- Add single function to run watch and generate all files
+- Add enable option to all app outputs
+- Add enable option to programs and containers filter
+- Update documentation for common packages options
+- Update LLM instruction
+- Update initial new package instructions
+- Add assertions and warnings options
+- Small update of development environment messages
+- Footer update
+- Move all flake related files to flake dir
+- Add source.patches option
+- Add pythonPackageBuilder
+- Make forge development shell default
+- Nixpkgs update
+- Add more options for pythonPackageBuilder and pythonAppBuilder
+- Update options descriptions and examples
+- Drop plainBuilder
+- Fix agents file name
+- Add forge-registry package and app
+- Fix default apps.containers values
+- Add code block style for content rendedred from markdown
+- *(forge-registry-app)* Update usage
+- Use elm2nix.buildElmApplication to build package
+- Update example template
+- Remove redundant empty lines in file
+- Nixpkgs update
+- Add support for finalAttrs in Python builders
+- Provide AGENTS.md file from ui
+- Fix AGENTS.md file location
+- *(packages/forge-registry)* Add production dependencies
+- *(packages/forge-registry)* Provide gunicorn as passthru output
+- *(packages/forge-registry)* Provide production environment as passthru
+- Add apps.*.vm.config.cores option
+- *(elm)* Provision elm-language-server
+- *(elm)* Provision elm-format
+- Remove forge-registry package and app
+- *(nix)* Do not require flake for packages and devShells
+- *(elm-watch)* Init
+- *(ui)* Use watchman, esbuild, elm-watch, systemd-run
+- *(ui)* Differentiate in modules, and integrate with sum types
+- *(ui)* Drop recipe creation
+- *(api)* No longer track generated file in Git
+- *(api)* Apps are now a Dict
+- *(ui)* Introduce AppName instead of String
+- *(ui)* Drop the selection of packages
+- *(ui)* De-vendor bootstrap css from tree
+- *(ui)* Remove forge-options from ui
+- *(ui)* Fix footer to point to ngi-nix app-store
+- *(ui)* Rename NixForge.* to Main.*
+- *(ui)* Init routing to selected app
+- *(ui)* Focus on searched apps or selected app or error
+- *(ui)* Switch markdown library
+- Fix python-app container and nixos name
+- Add compose files to container apps
+- *(ui)* Experimental features are not enabled by default
+- *(ui)* Use a coherent naming scheme
+- *(ui)* Report routing errors
+- *(ui)* Fix infinite loop in routing
+- *(dev-ui)* Output directly to `build/js/Elm.js`
+- *(ui)* Move some helpers to their own module
+- *(ui)* Reuse `Update_Navigation` in `init`
+- *(ui)* Fix typos
+- *(ui)* Use `model_page` instead of `model_focus`
+- Init
+- Init at 0.0.15
+- Make main home page link bigger
+- Improve application details style
+- Clean up message when entering development environment
+- Application Run window cleanup
+- Small alignment and padding fixes
+- Remove substituters configuration instruction
+- Show code block in standard colors
+- Use markdown-content class for code blocks
+- Logical reordering of app recipes
+- Fix config repository URL
+- Fix container run command
+- *(ui)* Remove the auto option in the themeswitcher
+- *(ui)* Register `bootstrapCss` as GC root during `dev-ui`
+- *(ui)* Init route /recipe/options
+- *(ui)* Redo first ambient key press action
+- *(ui)* Rename and sort by topology
+- *(ui)* Hide recipe options button when already there
+- Add formatter
+- Use numtide dev shell
+- *(ui)* Use git toplevel as rootDir
+- *(ui)* Start esbuild service after nix builds have ended
+- *(ui)* Reload direnv on changes in flake/develop/
+- *(dev)* Drop envrc
+- *(forge)* Remove app.*.packages option
+- Remove app.*.version option
+- Init at 1.24
+- Update
+- Use ngi-forge binary cache
+- *(doc)* Echo needs -e for \n
+- *(ui)* Fix typo {Ouput  => Output}
+- *(ui)* Remove outdated comment
+- *(ui)* Use fragment instead of queryParameters for Run
+- *(ui)* Do not record pages in history
+- Make links bold
+- Bigger app name in app details
+- Remove redundant name option for nixos and containers
+- Remove hello-app
+- Nest grants under ngi namespace
+- *(python-web-app)* Update description and usage
+- *(python-web-app)* Fix compose file
+- *(templates/example)* Use `follows` to `ngi-forge`'s `inputs`
+- *(nixpkgs)* Update path to the portable service infrastructure
+- Add links
+- Add test.script
+- Add test.script
+- Split
+- Add requirements
+- Add internal testScript
+- Add default
+- Check app test script
+- Add wait for app services
+- Improve application run instructions
+- *(python-web-app)* Add example ngi grants
+- Separate app name and description from usage
+- Update to match app redesign
+- *(ui)* Name using the same pattern
+- *(ui)* Fix watchman trigger name
+- *(ui)* Rename {viewDescription => viewPageAppDescription}
+- *(/recipe/options)* Hide `?MaxResultsPerPage` by default
+- *(viewPageAppRunInstructions)* Show `model_errors` only after clicking "Run"
+- *(dev-ui-mock)* Use `fake.url()`
+- *(AppLinks)* Remove redundant `LinkType`
+- *(ui)* Sync with new `forge-config.json`
+- *(master)* Merge fix-theme@phanirithvij
+- *(master)* Merge dprint-init@phanirithvij
+- Update programs to match redesign
+- *(*)* Resolve treefmt errors
+- *(mock-forge-config)* Sync with latest JSON schema
+- Remove geospatial packages
+- Use nimi process manager for nixos
+- *(python-web-app)* Make test more robust
+- *(master)* Merge pagination-apps@phanirithvij
+- Use ngi-patches branch for nimi
+- Update flake lock file
+- Update nimi
+- Clean up Run instructions window title
+- Use displayName for python-web and tau apps
+- Drop requests package
+- Remove programs configuration from python-web-app
+- *(ui)* Introduce `Decode.flipMap` and `Decode.andMap`
+- Expose flake modules in provider template; rename
+- Add kepler-formal package and app
+- Add nimi to the "powered by" list
+- Add mox application
+- *(mox-app)* Fix instructions
+- *(hello-app)* Remove services configuration
+- *(mox-app)* Fix instructions
+- *(mox-app)* Add icon
+- Add announcement script
+- Add bang package and app
+- *(Main.Helpers.AppUrl)* Remove unused module
+- *(tau-app)* Small update of usage instructions
+- *(Main.View.Page.Recipe.Browser)* Rename `Main.View.Page.Recipe.{Nav => Browser}`
+- *(Main.View.Page.Recipe.Browser)* Remove `pathPageRecipeOptionsBrowser`
+- *(Main.View.Page.Recipe.Browser)* Rename to shorter module-local names
+- *(ui)* Compress unfolded paths
+- Update nixpkgs input
+- *(mox-app)* Use services.runtimes.container.packages option
+- *(tau-app)* Use services.runtimes.container.packages option
+- *(mox-app)* Configure ports and fix service test
+- Add offen packages and app
+- Init app and packages
+- Use strictDeps to reduce container size
+- Install docs package in _forge-ui
+- Add Docs link to navbar
+- Build docs in dev-ui script
+- *(ironcalc)* Fix `PATH` antiquotation
+- *(ui)* Ensure icons remain writable
+- *(packages/package.nix)* Move package `options` to `package.nix` like `app.nix`
+- *(package)* Default `mainProgram` to `null`
+- *(mox)* Use `config` instead of `rec`
+- *(tslib)* Use `config` instead of `rec`
+- *(builder/*/options.nix)* Move all builders' `options` into a dedicated file
+- Add survey link in mk-announcement.sh
+- *(ironcalc-app)* Don't provide ironcalc program in shell runtime
+- Init package recipe
+- Add app recipe with shell runtime
+- Drop package recipe, fix grants key, add icon
+- Init app
+- Migrate to separate ports configuration
+- Use default compose file where possible
+- Remove "Available in" information from usage
+- Update runtime badges style
+- Remove remaining "Available in" from app usage
+- Update nixpkgs
+- Init app
+- *(ironcalc-app)* Add missing fullstop in description
+- Enable program runtime
+- Enable program runtime
+- Init package
+- Fix ci fail and enable upstream tests
+- Add app recipe with shell runtime
+- Fix dual license and cargoHash field order
+- *(ziplinter-app)* Update usage instructions
+- Add note about collaboration features
+- Expose app and package derivations and recipes
+- Remove apps.*.services.runtimes.container.tag option
+- Use per-container runtime options
+- Clean up qlever-app
+- Update manual container build instructions
+- Get ports from components
+- Remove text and description from apps.*.links options
+- Use imageConfig
+- Use nixosConfig
+- *(_forge-config)* Avoid building the whole forge when generating the JSON for the frontend
+- *(qlever-app)* Fix state, working directories and service users config
+- Add missing fullstop in package and app descriptions
+- Add app recipe
+- Add test script
+- Show page-specific titles in browser tab
+- Add app recipe with Commons and Entrust grants
+- Add package and app recipe
+- Fix mock app name
+- *(recipe.nix)* Use a common module type for all `recipe.nix` files
+- *(*)* Run `nix fmt` afterward to keep previous changes minimal
+- Migrate to managed user
+- Remove mk-announcement.sh
+- Migrate to managed state dir
+- *(forge)* Remove no longer required `nixpkgs-pkgs`
+- Nixpkgs update
+- *(README)* Fix typo
+- *(forge)* Still provide `nixpkgs-pkgs` for conflicted packages
+- *(qlever-app)* Use service packages option
+- *(example+app)* Replace python-web with more simple example app
+- Init app
+- Init app
+- Add package and app recipe
+- Migrate to new recipe format
+- Weekly nix flake update
+- *(qlever-app)* Don't copy owner during qlever-ui setup
+- Fix test warnings
+- Init app
+- Init app
+- Init app
+- Init app
+- Init app
+- *(py3dtiles-app)* Fix icon configuration
+- Update nimi
+- *(pnpmPackageBuilder)* Use `finalAttrs` instead of `package`
+- *(badkeys-app)* Use capital letter in display name
+- Fix nlnet.nl page link
+- Add app recipe
+- Add app recipe
+- Add app recipe
+- Add app recipe
+- Add package and app recipe
+- Migrate to new recipe format
+- Fix version, test script and usage example
+- *(socktrace+socktrace-app)* Update test and example
+- Remove app suffix in file
+- Add package and app recipe
+- Migrate package and app recipes to new format
+- *(sequoia-pqc+sequoia-pqc-app)* Update test and example
+- Weekly nix flake update
+- *(forge)* Pin `inputs.ngi-forge.inputs` as `forge-inputs`
+- *(mox)* Use package from Nixpkgs
+- *(ironcalc)* Use packages from Nixpkgs
+- *(dutctl)* Use package from Nixpkgs
+- *(aerogramme)* Use package from Nixpkgs
+- *(kdenlive)* Remove patch
+- *(qlever)* Use packages from nixpkgs
+- *(arwen)* Use packages from nixpkgs
+- *(vg)* Use package from nixpkgs
+- *(helium)* Redundant package
+- Fix name of sequoia-pgp package and app
+- *(offen)* 0.0.0-unstable-2026-03-04 -> 1.4.2-unstable-2026-06-11
+- *(tau-radio)* 0.2.101-unstable-2025-12-17 -> 0.2.101-unstable-2026-06-11
+- *(tau-tower)* 0.2.2-beta-unstable-2026-03-14 -> 0.2.101-unstable-2026-06-11
+- *(bang)* 0-master-2026-04-14 -> 0-unstable-2026-06-11
+- *(kepler-formal)* 1.0.0-unstable-2026-04-13 -> 0-unstable-2026-06-11
+- *(pagedjs-cli)* 0-main-2026-01-05 -> 0-unstable-2026-06-11
+- *(qlever-ui)* 0-unstable-2026-04-16 -> 0-unstable-2026-06-11
+- *(tau)* Update config file to new schema
+- Drop nlnet new package announcement template
+- Add xrsh app recipe
+- Add owi app recipe
+- Add inko app recipe
+- Add cryptolyzer app recipe
+- Add slipshow app recipe
+- Add servo app recipe
+- Add re-isearch app recipe
+- Add oku app recipe
+- Add nyxt app recipe
+- Add naja app recipe
+- Add mitmproxy app recipe
+- Add icestudio app recipe
+- Add gnucap app recipe
+- Add arcan app recipe
+- Add alive2 app recipe
+- Add package and app recipe
+- Weekly nix flake update
+- *(provider)* Add provider-team as maintainer of example packages
+- Remove "-app" suffix from recipe directory name
+- *(consumer)* Fix description override
+- *(apps/cpdf)* Init (#630)
+- Update form link in announcement script
+- Update form link in app view
+- Weekly nix flake update (#643)
+- Add pmtiles-viewer package
+- Add protomaps app recipe
+- *(forge)* Replace `-app` namespace by `apps-` and introduce `pkgs-` namespace
+- *(forge)* Replace `{apps,pkgs}-` namespaces by `{apps,pkgs}.`
+- *(forge)* Rename `_forge-*` to `_forge.*` namespace
+- *(forge)* Factorize `${namespace}.` helper
+- Rename nixpkgs' package set; fix nimi inputs
+- Update grants and add homepage link
+- Add grant
+- Add missing grants (#655)
+- Init app program (#657)
+- *(diesel)* Add missing grant
+- *(forge)* Share `sharedBuildAttrs` even more by turning it into `packageBuilderModule`
+- Init app
+- Init app
+- Init app program
+- Add missing grant
+- Init app (#676)
+- Init app (#671)
+- Init app (#670)
+- Init app (#665)
+- Weekly nix flake update
+- Init app (#672)
+- Remove container runtime composeFile and imageConfig options
+- Update services configuration
+- Refactor `resources` merging
+- Compose resources using the module system
+- Refactor compose file
+- Small refactor to nixos runtime resources' port forwarding
+- Refactor nixosComponents
+- Refactor resource module into separate file
+- *(*)* Rename {packages => pkgs}
+- Weekly nix flake update
+- Update nimi input
+- Read service configuration files directly from XDG_CONFIG_HOME
+- *(kikit)* Add test
+- *(bang)* 0-unstable-2026-06-11 -> 0-unstable-2026-07-13
+- *(pagedjs-cli)* 0-unstable-2026-06-11 -> 0-unstable-2026-01-05
+- *(bang)* 0-unstable-2026-07-13 -> 0-unstable-2026-06-21
+- *(qlever-ui)* 0-unstable-2026-06-11 -> 0-unstable-2026-04-26
+- *(rpki-client)* Use stable release in source
+- Refactor example apps
+- Drop python-web package and app
+- *(provider)* Fix test in multi-component app
+- *(apps.datalab)* Init
+- *(apps.datalab)* Improve usage instruction
+- Init app
+- Add demo
+- *(forge)* Enable `imports` in `packages.${package}.build{,.${builder}}`
+- *(pkgs.zenroom)* Init
+- *(apps.zenroom)* Init
+- *(forge)* Move `scrubConfig` to `lib.scrubNixContext`
+- Update to the latest nixos-unstable version + modular services fix
+- Fix tests for 1.0.0-beta.18
+- *(bang)* Fix support for python 3.14
+- Add alps app recipe
+- *(apps.sudo-rs)* Add missing grant
+- *(provider)* Add healthcheck to multi-component app
+- *(provider)* Log requests in hello-web
+- Add missing grant
+- Update nimi input to fix clippy errors
+- Update all other inputs
+- Back to upstream nixpkgs
+- Update nixpkgs input
+- Fix failure
+- *(apps.vivliostyle)* Init
+- *(forge)* Init `identityBuilder` to provide an external derivation
+- Add script to automate nixpkgs build failure issue creation
+- Allow build
+- Weekly nix flake update
+- Fix test
+- Remove temporary patches
+- Use from nixpkgs
+- *(apps.kicad)* Init
+- *(apps.texlyre)* Init
+- *(apps.bluetuith)* Init
+- *(pkgs.emerge)* Init at 2.8.2
+- *(apps.emerge)* Init
+- *(apps.authlib)* Init
+- Improve app recipe
+- *(pkgs.padne)* Init from Nixpkgs
+- *(apps.padne)* Init
+- *(apps.surfer)* Init
+- *(pkgs.beacondb)* Init
+- *(ocaml-quic)* Init at 0-unstable-2026-03-16
+- *(ocaml-quic)* Init at 0-unstable-2026-03-16 (#819)
+- Init app
+- Init app (#842)
+- *(pkgs.bids)* Init at 0.3.1
+- *(apps.bids)* Init
+- *({apps,pkgs}.bids)* Init (#834)
+- *(apps.amaranth)* Init
+- *(apps.amaranth)* Init (#846)
+- *(pkgs.mwoffliner)* Init at 1.17.5
+- *(apps.mwoffliner)* Init
+- *({pkgs,apps}.mwoffliner)* Init (#852)
+- *(apps.servo)* Add additional grants
+- *(apps.servo)* Add additional grants (#864)
+- *(apps.texlyre)* Add custom hex icon
+- *(apps.teamtype)* Fix icon
+- *(apps.texlyre)* Add custom hex icon (#868)
+- Add discussion on re-exporting packages and make scopes clearer. (#869)
+- *(apps.zenroom)* Re-use test file as data
+- *(forge)* Init `packages.${package}.build{,.${builder}}.{env,structuredAttrs}`
+- *(forge)* Init packages.${package}.build{,.${builder}}.{env,structuredAttrs} (#646)
+- *(apps.dokieli)* Init
+- *(apps.dokieli)* Init (#860)
+- *(pkgs.labplot)* Init at 2.12.1
+- *(apps.labplot)* Init
+- *({pkgs,apps}.labplot)* Init (#853)
+- *(apps.comaps)* Init
+- *(apps.comaps)* Init custom hex icon
+- *(apps.CoMaps)* Init (#858)
+- *(apps.f3d)* Init
+- *(apps.f3d)* Init (#859)
+- *(pmtiles-viewer)* 0-unstable-2026-05-26 -> 0-unstable-2026-08-10
+- *(pmtiles-viewer)* 0-unstable-2026-05-26 -> 0-unstable-2026-08-10 (#875)
+- *(pkgs.ties)* Init at 0.3.0
+- *(apps.ties)* Init
+- *(apps.ties)* Handle passwordFile
+- *(apps.ties)* Add simple hex icon
+- *(pkgs.ties)* Allow localhost usage
+- *({pkgs, apps}.ties)* Init (#854)
+- *(pkgs.esp-clang)* Init at 21.1.3_20260408
+- *(pkgs.esp-clang)* Init at 21.1.3_20260408 (#850)
+- Weekly nix flake update
+- *(apps.nyxt)* Remove propagated nixpkgs fix
+- Automatic update of nixpkgs input (#855)
+- *(apps.kaitai-struct)* Re-use files in data
+- *(pkgs.esp-clang)* Fix isLinux
+- *(pkgs.esp-clang)* Fix isLinux (#885)
+- OcamlBuilder.scope -> ocamlBuilder.ocamlPackages
+- OcamlBuilder.scope -> ocamlBuilder.ocamlPackages (#893)
+- *({pkgs,apps}.vacask)* Init
+- *({pkgs,apps}.vacask)* Init (#898)
+- *(apps.signaturepdf)* Init
+- *(apps.signaturepdf)* Init (#904)
+- *(apps.lix)* Init recipe
+- *(apps.lix)* Init recipe (#889)
+- *(apps.emerge)* Use derivations in nixpkgs
+- *(apps.emerge)* Use derivations in nixpkgs (#890)
+- *(apps.zrythm)* Init
+- *(apps.zrythm)* Init (#903)
+- Update nimi input
+- Update nimi input (#907)
+
+### 🚜 Refactor
+
+- *(ui)* Move some html funcitions to separate file
+- *(ui)* Pull out packages list code to funciton
+- *(forge)* Make debug and extraDrvAttrs options common for all builders
+- Define appsFilter in config
+- Split apps submodule to separate file
+- Move apps to directory
+- Split container config to separate folder
+- Split vm config to separate folder
+- Split programs to separate folder
+- OptionsDoc composition
+- *(ui)* Move ports to Main.Ports
+- *(ui)* Move js and css files into subfolders
+- *(ui)* Move to Main.Helpers
+- *(ui)* Move usage instructions to instructions
+- Dynamically assert available builders
+- *(ui)* Use esmodules for ports
+- *(ui)* Reuse existing decodeEscapeKey
+- *(ui)* Simplify application run commands
+- *(ui)* Rename programs to shell
+- Pass original services through after composing them
+- Compose container requirements in nimi config
+- Expose service-config composition under
+- Source fetch
+- *(ui)* Simplify handling commitid
+- *(ui)* Move model_theme to model_preferences
+- Make submodule for ngi-specific options
+- *(ui)* Use existing route.tostring
+- Rename package recipe options for consistency
+- Rename package recipe options (continue)
+- Rename test and development requirements
+- Application configuration redesign
+- Python-web app with new design
+- Template app recipe
+- Rename example flake template
+- Improve name of oci image build script
+- *(ui)* Use modern es6 js syntax
+- Programs redesign
+- Programs in app recipes
+- Rename inputs and requirements options to packages
+- *(ui)* Factorize search subset optimization
+- Simplify app programs configuration
+- Make runtime options consistent
+- Change apps.*.services.components.<name>.environment option to attrs
+- Split app config and make it more consistent
+- Extract nimi imports into separate file
+- Rename apps.*.services.runtimes.container.imageConfig to extraConfig
+- Separate application ports option
+- *(dev)* Refactor dev scripts naming
+- Compose project announcement snippet with Nix
+- Per-container runtime configuration options
+- ComponentConfig and remove tags
+- Rename apps.*.services.runtimes.container.components.<name>.extraConfig to imageConfig
+- Rename apps.*.services.runtimes.nixos.extraConfig to nixosConfig
+- Consolidate app nixosModule creation
+- Rename attribute used to pass container runtime configuration
+- Rename app.devenv attribute to env
+- Remove app suffix from app recipes
+- Change maintainerList option to list of paths
+- Simplify shell.nix
+- Shared builder module and split src
+- Rename shared builder functions
+- Clean up builders
+- Move shared module to folder
+- Rename apps.<name>.services.components.<name>.after to dependsOn
+- Set container image tag to nix derivation hash
+- Make internal container image options consistent
+- Drop obsolete recipeDirs option
+- Truncate container image dir name to 8 chars
+- Remove dead code
+
+### 📚 Documentation
+
+- Add README file
+- README update
+- README update
+- README update
+- Add packaging workflow
+- README update
+- README update
+- README update
+- README update
+- README update
+- Update package debug instructions
+- README update
+- README update
+- README update
+- README update
+- README update
+- README update
+- Add options documentation
+- Fix links to configuration options in README
+- Remove options in html format
+- README update
+- README update
+- README update
+- README update
+- Add confrecence talk abstract
+- README update
+- README update
+- Add LLMs spec
+- Update LLM spec
+- Update LLM spec
+- Update project description in README
+- Update README with self hosting instructions
+- Small README update
+- README update [ci skip]
+- Update conceptual diagram
+- README update
+- Readme cleanup
+- *(ui)* Developing and learning
+- Add self-reference note to app recipes
+- Update AGENTS.md application instructions
+- Modify git option description
+- Update AGENTS.md
+- Add goPackageBuilder
+- Add rustPackageBuilder
+- Update AGENTS.md
+- *(dev)* Remove formatter packages from welcome message
+- Fix template name in README
+- Update AGENTS.md to contain displayName
+- Update AGENTS.md file
+- *(ui-tests)* Add minimal docs for testing
+- README update
+- README update
+- Add announcement text for version 0.1
+- Fix formatting
+- Add sphinx documentation
+- Add quick start for application users
+- Fix rendering of multi-line code block
+- Add packaging guide for contributors
+- *(conf)* Show up to h3 headings in page TOC
+- Add grid to main docs page
+- Move quick start to user manual
+- Clean-up developer docs
+- Add program runtime to quick start instructions
+- *(developer)* Add information about forge-ui
+- Update AGENTS file
+- Update apps.*.ngi options docs
+- Update apps.*.programs docs
+- Update apps.*.services docs
+- Update apps.*.test docs
+- Update apps.* docs
+- Update packages.* except build
+- Update packages.*.build.standardBuilder docs
+- Update packages.*.build.pythonPackageBuilder docs
+- Update packages.*.build.pythonAppBuilder docs
+- Update packages.*.build.goPackageBuilder docs
+- Update packages.*.build.npmPackageBuilder docs
+- Update packages.*.build.pnpmPackageBuilder docs
+- Update packages.*.build.rustPackageBuilder docs
+- Update modules docs based on PR review
+- Fix package.*.develop.shellHook docs
+- Improve announcement template
+- Fix commands and examples in options docs
+- Update options docs related to state dir
+- Update app stateDir option description
+- Update app packages options description
+- Drop AGENTS.md file
+- Update package recipe docs
+- Add application recipe documentation
+- Improve author email announcement template
+- Document package development environment (#648)
+- Add how-to page for updating package recipes  (#667)
+- Update application recipe manual
+- Add docs for system cleanup
+- Add more info about Nixpkgs maintenance
+- Fix license listing expression
+- Made required scope for recipes clearer
+- Added comments about re-exporting packages
+
+### ⚡ Performance
+
+- *(backend/nimi)* Do not reimport nixpkgs into the Nix store
+- *(ui)* Remove lazy loading and add preloading for app icons
+
+### 🎨 Styling
+
+- *(ui)* Move app view into a dedicated function
+- Format project
+- Format `forge/modules/packages.nix`
+- *(ui)* Copy icon css
+- *(ui)* Hide everything if no runtime type is available
+- Format with treefmt
+- *(ui)* Use url fragments for permalinks
+- Fmt tree with treefmt
+- *(ui)* Use short rev in usage instructions
+- Make nav icon bigger
+- *(ui)* Center pagination controls in options list
+- *(ui)* Remove "Page" string from pagination control
+- *(dev)* Add dprint to format markdown and js
+- Format source code with treefmt
+- *(ui)* In Options page show pagination on both top and bottom
+- *(ui)* Make packages links
+- *(ui)* Make version italic
+- *(ui)* Improve pagination styling
+- Format project
+- Format tree
+- Fix formating
+- *(ui)* Scroll into view at center
+- *(ui)* Change option filters colorscheme
+- Use secondary text for app description and usage instructions
+- *(ui)* Make all app cards same size
+- *(ui)* Always show flakes recommended badge
+- *(ui)* Fix copy icon not visible on chromium
+- *(ui)* Increase run modal width
+- *(ui)* Use hex icon for ironcalc
+- *(ui)* Show grants as a list
+- *(recipes)* Add languages in usage instructions
+- *(ui)* Convert run instructions in to bash
+- Cleanup introspection
+- Fold runtimes.shell.enable
+- *(ui)* Redesign app cards
+- *(ui)* Fix options page bg color
+- *(ui)* Fix pkgs overflow
+- *(ui)* Redesign app cards (#838)
+- *(ui)* Add hover scale effect for app details icon
+- *(ui)* Initials for app icons (#884)
+- *(ui)* Perfectly vertically center description in app cards
+- *(ui)* Show runtime badges on small screens
+- *(ui)* App cards content alignment (#888)
+
+### 🧪 Testing
+
+- Update checks
+- Check all passthru attributes
+- Rename function for extracting passthru attrs
+- Rename function for extracting passthru attrs
+- *(ui)* Use elm-test-rs
+- *(ui)* Verify recipePath in app details page
+
+### ⚙️ Miscellaneous Tasks
+
+- Add UI deployment workflow
+- Add tests
+- Remove flake-parts debug comment
+- Use cachix as binary cache
+- Remove abstract file
+- *(docs)* Move manuals to docs/manuals
+- *(git)* Add direnv to gitignore
+- Remove generated files from tree
+- Match forge url in a more robust way in template test
+- Remove old apps outputs
+- Refactor app recipes to use new config options
+- Remove package image output
+- Add license to existing packages
+- Add missing license files to package recipes
+- *(dev)* Update flake input for nimi
+- Flake.nix cleanup
+- Clean up default.nix
+- Remove nixConfig
+- Remove redundant setting option
+- Clean up nimi nixos module
+- Make template testing modular; add consumer test
+- Remove redundant use of service profile in compose file
+- Replace remaining "Nix Forge" text to "NGI Forge"
+- Cache netlify command
+- Limit number of parallel Nix build jobs
+- Fix ui deployment to ngi.nixos.org
+- Weekly nixpkgs flake input update
+- Install Nix in weekly-flake-update workflow
+- Pin actions with pinact
+- Autofix issues using zizmor
+- Fix excessive permissions
+- Fix formatting issues
+- Run flake check when checking templates
+- Add workflow for updating packages (#626)
+- Split package-update scripts into separate files
+- Add a dry-run script for package updates
+- Keep building, even if a package fails
+- Test templates using forge app tests
+- Check nixpkgs hydra for ngi packages build status
+- Rename nixpkgs build status workflow
+- Add workflow to import nixpkgs tasks to project
