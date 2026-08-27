@@ -1,8 +1,13 @@
 {
+  config,
   pkgs,
   lib,
   ...
 }:
+
+let
+  app = config.apps.datalab;
+in
 
 {
   pkgs.datalab = {
@@ -52,13 +57,12 @@
 
       Third, run the following script:
 
-      ```python
-      # test.py
-      ${lib.readFile ./test.py}
+      ```file:python:${app.data.test.name}
+      ${app.data.test.content}
       ```
 
       ```bash
-      python ./test.py
+      python ./${app.data.test.name}
       ```
 
       Lastly, navigate to the DataLab GUI and you should find `my-signal` in the Signal Panel and `my-image` in the Image Panel.
@@ -67,6 +71,10 @@
     '';
 
     icon = ./icon.svg;
+
+    data = {
+      test = ./test.py;
+    };
 
     links = {
       website = "https://datalab-platform.com";

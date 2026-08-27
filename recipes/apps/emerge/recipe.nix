@@ -6,6 +6,7 @@
 }:
 
 let
+  app = config.apps.emerge;
   pyEnv = pkgs.python3.withPackages (ps: [ pkgs.python3-emerge ]);
 in
 
@@ -37,21 +38,24 @@ in
     usage = ''
       Write the following script into a local file:
 
-      ```py
-      # ${lib.baseNameOf ./tests/first-simulation.py}
-      ${lib.readFile ./tests/first-simulation.py}
+      ```file:python:${app.data.first-sim.name}
+      ${app.data.first-sim.content}
       ```
 
       Then, [enter the Nix shell](app/emerge#run-shell) and execute the script:
 
       ```bash
-      python ${lib.baseNameOf ./tests/first-simulation.py}
+      python ${app.data.first-sim.name}
       ```
 
       Screenshots of the result will be written in the same directory as the script.
 
       For more details and examples, please see the latest user manual in the [project documentation](${config.apps.emerge.links.docs}) page.
     '';
+
+    data = {
+      first-sim = ./tests/first-simulation.py;
+    };
 
     links = {
       website = "https://www.emerge-software.com";
