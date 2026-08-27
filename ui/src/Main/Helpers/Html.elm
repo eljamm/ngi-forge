@@ -1,11 +1,11 @@
 module Main.Helpers.Html exposing (..)
 
-import Html exposing (Attribute, Html, button, div, node)
-import Html.Attributes exposing (attribute, class)
+import Html exposing (Attribute, Html, button, details, div, node, summary, text)
+import Html.Attributes exposing (attribute, class, style)
 import Html.Events exposing (stopPropagationOn)
 import Json.Decode
 import Main.Config.App exposing (AppRuntime, showAppRuntime, showAppRuntimeDescription)
-import Main.Icons exposing (iconCopy)
+import Main.Icons exposing (iconCopy, iconDownload)
 import Main.Update.Types exposing (..)
 
 
@@ -35,6 +35,69 @@ mdResolveLangCodeAlias lang =
 
         any ->
             any
+
+
+type alias FileTag =
+    { language : String
+    , filename : Maybe String
+    }
+
+
+defaultLanguage : String -> String
+defaultLanguage lang =
+    if String.isEmpty lang then
+        "txt"
+
+    else
+        lang
+
+
+extractExtension : String -> String
+extractExtension filename =
+    filename
+        |> String.split "."
+        |> List.reverse
+        |> List.head
+        |> Maybe.withDefault ""
+        |> defaultLanguage
+
+
+toOptionalString : String -> Maybe String
+toOptionalString str =
+    if String.isEmpty str then
+        Nothing
+
+    else
+        Just str
+
+
+parseFileLanguageTag : String -> Maybe FileTag
+parseFileLanguageTag tag =
+    case String.split ":" tag of
+        [ "file" ] ->
+            Just { language = "txt", filename = Nothing }
+
+        [ "file", item ] ->
+            if String.contains "." item then
+                Just
+                    { language = extractExtension item
+                    , filename = Just item
+                    }
+
+            else
+                Just
+                    { language = defaultLanguage item
+                    , filename = Nothing
+                    }
+
+        "file" :: language :: filenameParts ->
+            Just
+                { language = defaultLanguage language
+                , filename = toOptionalString (String.join ":" filenameParts)
+                }
+
+        _ ->
+            Nothing
 
 
 type alias CodeBlock =
@@ -70,27 +133,66 @@ bashCodeBlock content =
 codeBlock : CodeBlock -> Html Update
 codeBlock body =
     let
-        lang =
-            body.language
-                |> Maybe.withDefault ""
+        rawLang =
+            Maybe.withDefault "" body.language
+
+        fileTag =
+            parseFileLanguageTag rawLang
+
+        highlightLang =
+            fileTag
+                |> Maybe.map .language
+                |> Maybe.withDefault rawLang
                 |> mdResolveLangCodeAlias
+
+        codeNode =
+            node "highlightjs-code"
+                [ attribute "language" highlightLang
+                , attribute "body" body.body
+                ]
+                []
 
         copyBtn =
             button
-                [ class "btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 button copy"
+                [ class "button copy"
                 , onClick (Update_CopyToClipboard body.body)
                 ]
                 [ iconCopy ]
+
+        downloadBtn filename =
+            button
+                [ class "button download"
+                , onClick (Update_DownloadFile { filename = filename, content = body.body })
+                ]
+                [ iconDownload ]
+
+        -- Shared flex container to keep buttons aligned without overlapping
+        actionContainer buttons =
+            div
+                [ class "position-absolute top-0 end-0 m-2 d-flex gap-2"
+                , style "z-index" "10"
+                ]
+                buttons
     in
-    div [ class "markdown-content position-relative" ]
-        [ copyBtn
-        , node
-            "highlightjs-code"
-            [ attribute "language" lang
-            , attribute "body" body.body
-            ]
-            []
-        ]
+    case fileTag of
+        Just { filename } ->
+            let
+                name =
+                    Maybe.withDefault "file.txt" filename
+            in
+            details [ class "markdown-content" ]
+                [ summary [ class "file-summary" ] [ text name ]
+                , div [ class "position-relative" ]
+                    [ actionContainer [ downloadBtn name, copyBtn ]
+                    , codeNode
+                    ]
+                ]
+
+        Nothing ->
+            div [ class "markdown-content position-relative" ]
+                [ actionContainer [ copyBtn ]
+                , codeNode
+                ]
 
 
 {-| `onClick` is like `Html.Events.onClick`

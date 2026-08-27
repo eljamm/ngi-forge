@@ -1,6 +1,7 @@
 module Main.Update exposing (..)
 
 import Browser.Dom as Dom
+import File.Download
 import List.Extra as List
 import Main.Config exposing (..)
 import Main.Config.App exposing (..)
@@ -76,6 +77,11 @@ update upd modelInit =
         Update_CopyToClipboard code ->
             ( model
             , Clipboard.copyToClipboard code
+            )
+
+        Update_DownloadFile { filename, content } ->
+            ( model
+            , File.Download.string filename "text/plain" content
             )
 
         Update_SetPreferences prefs ->
