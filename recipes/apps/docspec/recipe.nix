@@ -51,12 +51,12 @@ in
     '';
 
     data = {
+      mainPort = "3030";
       testProgram = "docspec convert tests/fixtures/docx/pandoc/headers.docx --output blocknote.json";
       testService = ''
-        curl -X POST http://localhost:3000/conversion \
+        curl -X POST http://localhost:${app.data.mainPort.content}/conversion \
           -H 'Content-Type: text/markdown' \
-          -d '# Hello'
-      '';
+          -d '# Hello' '';
     };
 
     links = {
@@ -87,19 +87,19 @@ in
         process.argv = [
           "http"
           "--host"
-          "127.0.0.1"
+          "0.0.0.0"
           "--port"
-          "3000"
+          "${app.data.mainPort.content}"
         ];
         process.ports = [
-          "3000:3000"
+          "${app.data.mainPort.content}:${app.data.mainPort.content}"
         ];
         healthcheck = {
           enable = true;
           test = [
             "${lib.getExe pkgs.curl}"
             "-fs"
-            "http://localhost:3000/health"
+            "http://localhost:${app.data.mainPort.content}/health"
           ];
           interval = "3s";
           timeout = "3s";
