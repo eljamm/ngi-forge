@@ -73,24 +73,24 @@ toOptionalString str =
 
 parseFileLanguageTag : String -> Maybe FileTag
 parseFileLanguageTag tag =
-    case String.split ":" tag of
+    case String.split " " tag of
         [ "file" ] ->
             Just { language = "txt", filename = Nothing }
 
-        [ "file", item ] ->
-            if String.contains "." item then
+        [ filenameParts, "file" ] ->
+            if String.contains "." filenameParts then
                 Just
-                    { language = extractExtension item
-                    , filename = Just item
+                    { language = extractExtension filenameParts
+                    , filename = Just filenameParts
                     }
 
             else
                 Just
-                    { language = defaultLanguage item
+                    { language = defaultLanguage filenameParts
                     , filename = Nothing
                     }
 
-        "file" :: language :: filenameParts ->
+        language :: "file" :: filenameParts ->
             Just
                 { language = defaultLanguage language
                 , filename = toOptionalString (String.join ":" filenameParts)

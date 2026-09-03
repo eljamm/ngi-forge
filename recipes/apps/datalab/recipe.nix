@@ -57,7 +57,7 @@ in
 
       Third, run the following script:
 
-      ```file:python:${app.data.test.name}
+      ```python file ${app.data.test.name}
       ${app.data.test.content}
       ```
 

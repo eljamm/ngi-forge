@@ -38,7 +38,7 @@ in
     usage = ''
       Write the following script into a local file:
 
-      ```file:python:${app.data.first-sim.name}
+      ```python file ${app.data.first-sim.name}
       ${app.data.first-sim.content}
       ```
 
