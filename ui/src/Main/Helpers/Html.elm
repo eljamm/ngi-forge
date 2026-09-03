@@ -71,8 +71,13 @@ toOptionalString str =
         Just str
 
 
-parseFileLanguageTag : String -> Maybe FileTag
-parseFileLanguageTag tag =
+{-| Parse language info strings and extract class.
+
+See: <https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/Markdown_in_MDN#additional_classes_info_strings>
+
+-}
+parseLanguageClass : String -> Maybe FileTag
+parseLanguageClass tag =
     case String.split " " tag of
         [ "file" ] ->
             Just { language = "txt", filename = Nothing }
@@ -137,7 +142,7 @@ codeBlock body =
             Maybe.withDefault "" body.language
 
         fileTag =
-            parseFileLanguageTag rawLang
+            parseLanguageClass rawLang
 
         highlightLang =
             fileTag
