@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 
@@ -13,19 +14,21 @@ in
     displayName = "DocSpec";
     description = "Document conversion SDK for rich text formats.";
     usage = ''
+      ##### Convert document with CLI
+
       First, [launch the shell envrionment](app/${app.name}#run-shell) containing `${app.name}`.
 
       Then, clone the project repository:
 
       ```bash
       git clone ${app.links.source} docspec
-      cd docspec/tests/fixtures
+      cd docspec
       ```
 
       Next, convert one of the test documents to a BlockNote JSON, since it's currently the best-supported output format:
 
       ```bash
-      docspec convert docx/docspec/preformatted-boundaries.docx --output blocknote.json
+      ${app.data.testProgram.content}
       ```
 
       For a list of supported formats and their status, run:
@@ -33,7 +36,28 @@ in
       ```bash
       docspec convert --help
       ```
+
+      ##### Convert document with server
+
+      First, launch the app [in a container](app/${app.name}#run-container) or [in a NixOS VM](app/${app.name}#run-nixos).
+
+      Then, send a markdown document to the server:
+
+      ```bash
+      ${app.data.testService.content}
+      ```
+
+      For more information regarding the endpoint, header and format reference, see the [`docspec-http`](${app.links.source}/tree/main/crates/docspec-http) page.
     '';
+
+    data = {
+      testProgram = "docspec convert tests/fixtures/docx/pandoc/headers.docx --output blocknote.json";
+      testService = ''
+        curl -X POST http://localhost:3000/conversion \
+          -H 'Content-Type: text/markdown' \
+          -d '# Hello'
+      '';
+    };
 
     links = {
       website = "https://github.com/docspec/docspec";
@@ -55,6 +79,65 @@ in
         shell.enable = true;
         program.enable = true;
       };
+    };
+
+    services = {
+      components.docspec = {
+        process.command = pkgs.docspec;
+        process.argv = [
+          "http"
+          "--host"
+          "127.0.0.1"
+          "--port"
+          "3000"
+        ];
+        process.ports = [
+          "3000:3000"
+        ];
+        healthcheck = {
+          enable = true;
+          test = [
+            "${lib.getExe pkgs.curl}"
+            "-fs"
+            "http://localhost:3000/health"
+          ];
+          interval = "3s";
+          timeout = "3s";
+          startPeriod = "10s";
+          retries = 10;
+        };
+      };
+
+      runtimes = {
+        container = {
+          enable = true;
+          components.docspec = {
+            packages = with pkgs; [
+              docspec
+              coreutils
+              bash
+            ];
+          };
+        };
+
+        nixos = {
+          enable = true;
+          packages = with pkgs; [
+            docspec
+          ];
+        };
+      };
+    };
+
+    test = {
+      programs.script = ''
+        cp -r ${pkgs.docspec.src}/. .
+        ${app.data.testProgram.content}
+      '';
+      services.script = ''
+        curl="curl --retry 10 --retry-max-time 120 --retry-all-errors"
+        $\${app.data.testService.content}
+      '';
     };
   };
 }
