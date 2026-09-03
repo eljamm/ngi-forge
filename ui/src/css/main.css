@@ -118,7 +118,9 @@ highlightjs-code pre {
 /* Unified Card and List Item styling across all pages (apps, packages, options) */
 .m-item-card,
 .list-group-item {
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 
 .m-item-card {
@@ -364,8 +366,6 @@ details.accordion-item[open] > summary.accordion-button::after {
   transform: rotate(180deg);
 }
 
-
-
 /* remove bootstrap default behavior */
 [data-bs-theme="dark"] .navbar-toggler-icon {
   --bs-navbar-toggler-icon-bg: "";
@@ -462,7 +462,8 @@ a:link {
 /* options filters colors */
 
 [data-bs-theme="light"] {
-  --bs-primary-rgb: 76, 110, 181; /* nixos logo color dark blue - Not enough contrast */
+  --bs-primary-rgb:
+    76, 110, 181; /* nixos logo color dark blue - Not enough contrast */
   --bs-primary-text-emphasis: #00418f;
   --bs-link-color: #00418f;
   --bs-link-color-rgb: 0, 65, 143;
@@ -534,30 +535,70 @@ pre code.hljs {
   fill: currentColor;
 }
 
-.markdown-alert-note { border-left-color: #0969da; }
-[data-bs-theme="dark"] .markdown-alert-note { border-left-color: #2f81f7; }
-.markdown-alert-note .markdown-alert-title { color: #0969da; }
-[data-bs-theme="dark"] .markdown-alert-note .markdown-alert-title { color: #2f81f7; }
+.markdown-alert-note {
+  border-left-color: #0969da;
+}
+[data-bs-theme="dark"] .markdown-alert-note {
+  border-left-color: #2f81f7;
+}
+.markdown-alert-note .markdown-alert-title {
+  color: #0969da;
+}
+[data-bs-theme="dark"] .markdown-alert-note .markdown-alert-title {
+  color: #2f81f7;
+}
 
-.markdown-alert-tip { border-left-color: #1a7f37; }
-[data-bs-theme="dark"] .markdown-alert-tip { border-left-color: #3fb950; }
-.markdown-alert-tip .markdown-alert-title { color: #1a7f37; }
-[data-bs-theme="dark"] .markdown-alert-tip .markdown-alert-title { color: #3fb950; }
+.markdown-alert-tip {
+  border-left-color: #1a7f37;
+}
+[data-bs-theme="dark"] .markdown-alert-tip {
+  border-left-color: #3fb950;
+}
+.markdown-alert-tip .markdown-alert-title {
+  color: #1a7f37;
+}
+[data-bs-theme="dark"] .markdown-alert-tip .markdown-alert-title {
+  color: #3fb950;
+}
 
-.markdown-alert-important { border-left-color: #8250df; }
-[data-bs-theme="dark"] .markdown-alert-important { border-left-color: #ab7df8; }
-.markdown-alert-important .markdown-alert-title { color: #8250df; }
-[data-bs-theme="dark"] .markdown-alert-important .markdown-alert-title { color: #ab7df8; }
+.markdown-alert-important {
+  border-left-color: #8250df;
+}
+[data-bs-theme="dark"] .markdown-alert-important {
+  border-left-color: #ab7df8;
+}
+.markdown-alert-important .markdown-alert-title {
+  color: #8250df;
+}
+[data-bs-theme="dark"] .markdown-alert-important .markdown-alert-title {
+  color: #ab7df8;
+}
 
-.markdown-alert-warning { border-left-color: #9a6700; }
-[data-bs-theme="dark"] .markdown-alert-warning { border-left-color: #d29922; }
-.markdown-alert-warning .markdown-alert-title { color: #9a6700; }
-[data-bs-theme="dark"] .markdown-alert-warning .markdown-alert-title { color: #d29922; }
+.markdown-alert-warning {
+  border-left-color: #9a6700;
+}
+[data-bs-theme="dark"] .markdown-alert-warning {
+  border-left-color: #d29922;
+}
+.markdown-alert-warning .markdown-alert-title {
+  color: #9a6700;
+}
+[data-bs-theme="dark"] .markdown-alert-warning .markdown-alert-title {
+  color: #d29922;
+}
 
-.markdown-alert-caution { border-left-color: #cf222e; }
-[data-bs-theme="dark"] .markdown-alert-caution { border-left-color: #f85149; }
-.markdown-alert-caution .markdown-alert-title { color: #cf222e; }
-[data-bs-theme="dark"] .markdown-alert-caution .markdown-alert-title { color: #f85149; }
+.markdown-alert-caution {
+  border-left-color: #cf222e;
+}
+[data-bs-theme="dark"] .markdown-alert-caution {
+  border-left-color: #f85149;
+}
+.markdown-alert-caution .markdown-alert-title {
+  color: #cf222e;
+}
+[data-bs-theme="dark"] .markdown-alert-caution .markdown-alert-title {
+  color: #f85149;
+}
 
 [data-bs-theme="dark"] .feedback-message { color: #dbdbdb; }
 .feedback-message { color: #010101; }
@@ -642,6 +683,7 @@ details.markdown-content highlightjs-code pre {
 
 /* Download button styling */
 .button.download {
+  transform: scale(0.95);
   opacity: 0.7;
   z-index: 10;
 }
