@@ -2,6 +2,7 @@
 # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/ocaml/dune.nix
 
 {
+  pkgs,
   lib,
   ...
 }:
@@ -19,8 +20,8 @@
     '';
 
     ocamlPackages = lib.mkOption {
-      type = lib.types.functionTo lib.types.attrs;
-      default = pkgs: pkgs.ocaml-ng.ocamlPackages;
+      type = lib.types.lazyAttrsOf lib.types.anything;
+      default = pkgs.ocaml-ng.ocamlPackages;
       defaultText = lib.literalExpression "pkgs: pkgs.ocaml-ng.ocamlPackages";
       description = ''
         The OCaml package scope providing the builder and the dependencies.

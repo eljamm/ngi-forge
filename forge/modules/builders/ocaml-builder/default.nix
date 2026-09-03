@@ -11,7 +11,7 @@
     (packageBuilderModule {
       name = "ocamlBuilder";
       imports = ./options.nix;
-      mkDerivation = (config.build.ocamlBuilder.ocamlPackages pkgs).buildDunePackage;
+      mkDerivation = config.build.ocamlBuilder.ocamlPackages.buildDunePackage;
       attrs =
         builder: finalAttrs: previousAttrs:
         {
