@@ -6,28 +6,9 @@
 }:
 
 let
-  ocamlPackages = pkgs.ocaml-ng.ocamlPackages.overrideScope (
-    _: prev: {
-      ssl = prev.ssl.overrideAttrs {
-        src = pkgs.fetchFromGitHub {
-          owner = "savonet";
-          repo = "ocaml-ssl";
-          rev = "a3ec4b6d6883a6a73e59f6756eceb1b7cbf45183";
-          hash = "sha256-zXk5cV6lz5q6XX/CVk8ymt/o+J8DCgAqWMULJLPzenk=";
-        };
-      };
-
-      tls = prev.tls.overrideAttrs {
-        src = pkgs.fetchFromGitHub {
-          owner = "anmonteiro";
-          repo = "ocaml-tls";
-          rev = "7756b79fd7ecd74bb516a01e054f08ddf031ebf1";
-          hash = "sha256-nKAqSI4JHfgAxd+UQrtW/FZIPI7XC0YOycG/j1AZoxU=";
-        };
-      };
-    }
-  );
+  ocamlPackages = pkgs.quic.passthru.ocamlPackages;
 in
+
 {
   pkgs.quic = {
     version = "0-unstable-2026-03-16";
@@ -43,7 +24,27 @@ in
     build.ocamlBuilder = {
       enable = true;
 
-      ocamlPackages = ocamlPackages;
+      ocamlPackages = pkgs.ocaml-ng.ocamlPackages.overrideScope (
+        _: prev: {
+          ssl = prev.ssl.overrideAttrs {
+            src = pkgs.fetchFromGitHub {
+              owner = "savonet";
+              repo = "ocaml-ssl";
+              rev = "a3ec4b6d6883a6a73e59f6756eceb1b7cbf45183";
+              hash = "sha256-zXk5cV6lz5q6XX/CVk8ymt/o+J8DCgAqWMULJLPzenk=";
+            };
+          };
+
+          tls = prev.tls.overrideAttrs {
+            src = pkgs.fetchFromGitHub {
+              owner = "anmonteiro";
+              repo = "ocaml-tls";
+              rev = "7756b79fd7ecd74bb516a01e054f08ddf031ebf1";
+              hash = "sha256-nKAqSI4JHfgAxd+UQrtW/FZIPI7XC0YOycG/j1AZoxU=";
+            };
+          };
+        }
+      );
 
       packages = {
         build = [ pkgs.pkg-config ];

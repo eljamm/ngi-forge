@@ -17,6 +17,10 @@
         {
           propagatedBuildInputs = builder.packages.dependencies;
 
+          passthru = {
+            inherit (config.build.ocamlBuilder) ocamlPackages;
+          };
+
           env = (previousAttrs.env or { }) // {
             DUNE_CACHE = "disabled";
           };
