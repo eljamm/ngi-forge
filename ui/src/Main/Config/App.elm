@@ -290,16 +290,16 @@ showAppRuntimeDescription : AppRuntime -> String
 showAppRuntimeDescription r =
     case r of
         AppRuntime_Program ->
-            "Run directly on your system"
+            "Run application natively on your system"
 
         AppRuntime_Shell ->
-            "Use within a shell environment"
+            "Run application within a shell environment"
 
         AppRuntime_Container ->
-            "Deploy as an isolated container"
+            "Run application in an OCI container"
 
         AppRuntime_NixOS ->
-            "Deploy as a virtual machine (VM)"
+            "Run application in a NixOS system"
 
 
 type alias AppLinks =
