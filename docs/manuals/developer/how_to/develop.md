@@ -15,6 +15,19 @@ echo -e "watch_dir flake/develop/\nuse nix" >.envrc # or cp .envrc.example .envr
 direnv allow
 ```
 
+Note that to save on download bandwidth and disk size, we support different types of shells depending on the required task:
+
+- `minimal`: only required tools
+- `ui`: minimal with local UI development tools
+- `ci`: minimal with CI/CD tools and checks
+- `default`: all tools
+
+To activate one of those shells, run:
+
+```bash
+nix develop .#devShells.<system>.<shell-name>
+```
+
 ## UI development
 
 Launch development server with automatic rebuild on change:
