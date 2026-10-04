@@ -27,6 +27,9 @@ All notable changes to this project will be documented in this file.
 - *ui:* Handle light and dark mode for inline code blocks ([#972](https://github.com/ngi-nix/forge/issues/972)) - ([1ec2419](https://github.com/ngi-nix/forge/commit/1ec2419e9e2e9754bd1b66a1318e033f2f77c49b))
 - *ui:* Prevent '__toString' option from showing in the options browser - ([fc33bb6](https://github.com/ngi-nix/forge/commit/fc33bb6ae3dc29cd8040fa9d497ac769b7e85366))
 - *ui:* Don't wrap app count widget on small screen - ([728faa4](https://github.com/ngi-nix/forge/commit/728faa4f38836ef931e3bb2113ad7f9e9e697a15))
+- *ui:* Position shuffle tooltip above button - ([2db5038](https://github.com/ngi-nix/forge/commit/2db50385ba1c979cbc7df0c9405f7041790c2938))
+- *ui:* Hide pagination visibility to keep consistent ui - ([5235049](https://github.com/ngi-nix/forge/commit/5235049de26a570d44a1ca37141998a0ef2c2640))
+- *ui:* Allow single clicks on app description to trigger card navigation - ([8c62319](https://github.com/ngi-nix/forge/commit/8c62319540ffc5248023e43c627b1f6c830a7a2d))
 - Remove redundant container resources options - ([b91f638](https://github.com/ngi-nix/forge/commit/b91f63895ac803acaa298030f7e572f1b17348f2))
 - Update script recipes path - ([866105d](https://github.com/ngi-nix/forge/commit/866105ddefb5108f3a842081453a0205d77f899c))
 - Update script package regex - ([70a0c0a](https://github.com/ngi-nix/forge/commit/70a0c0afd030f9bdcd5e80da01d0c478abb3022f))
@@ -69,6 +72,7 @@ All notable changes to this project will be documented in this file.
 - Fix typo - ([ef3430e](https://github.com/ngi-nix/forge/commit/ef3430e0a644802429dba71c519aaf12ef6bcf0e))
 - Update the matrix id in welcome message - ([9886563](https://github.com/ngi-nix/forge/commit/988656351b6d6d80db497c7d5477862a9bbfd337))
 - Add development instructions to README file - ([e4f38c1](https://github.com/ngi-nix/forge/commit/e4f38c13de213cd9b7f93320b036dcb578905e50))
+- Add note on different devshells - ([258ef39](https://github.com/ngi-nix/forge/commit/258ef3902a2493bd2a9d2d0ce1b44ef3746d4be1))
 
 
 ### Features
@@ -77,6 +81,7 @@ All notable changes to this project will be documented in this file.
 - *dev:* Add example .envrc - ([1ad162a](https://github.com/ngi-nix/forge/commit/1ad162a364c18e81ff67b6d0e42e2a170f8d5a23))
 - *pkgs:* Introduce test runner option for more flexibility - ([3e4b5e6](https://github.com/ngi-nix/forge/commit/3e4b5e63f747da0f050e7db7960e13860a5459db))
 - *pkgs:* Add sandbox option for nixos runner - ([a4260f4](https://github.com/ngi-nix/forge/commit/a4260f409148f71ef322df03b44277ace24081db))
+- *templates.developer:* Build default package from local source - ([8929cff](https://github.com/ngi-nix/forge/commit/8929cff031b0b7f494b53e9d052d29f232eebdca))
 - *ui:* Support alert blocks in usage instructions - ([0ed8e92](https://github.com/ngi-nix/forge/commit/0ed8e9277bfe08dcd3c29cb3776e626731b102a8))
 - *ui:* Sort apps by displayName - ([00f051c](https://github.com/ngi-nix/forge/commit/00f051c38a0914b615f90035c7205ca808d2d86f))
 - *ui:* Open markdown links in new tab - ([a4a887a](https://github.com/ngi-nix/forge/commit/a4a887a33cddfddbcc303c751e8bd21518699c8f))
@@ -113,6 +118,7 @@ All notable changes to this project will be documented in this file.
 - Display data-items as string from their content ([#968](https://github.com/ngi-nix/forge/issues/968)) - ([9671c93](https://github.com/ngi-nix/forge/commit/9671c93fa1b4095a94ca4190adbff69c220826cb))
 - Added more data types for data. ([#919](https://github.com/ngi-nix/forge/issues/919)) - ([ea3f37a](https://github.com/ngi-nix/forge/commit/ea3f37af35687a9953040f112882b68927c4e317))
 - Init changelog ([#908](https://github.com/ngi-nix/forge/issues/908)) - ([ebc2a0e](https://github.com/ngi-nix/forge/commit/ebc2a0ee855167383cc32854f24a9f27193d969b))
+- Print forge packages' name and version in devshell - ([352b3b1](https://github.com/ngi-nix/forge/commit/352b3b1e75c5e1461ec046d6aed0fff49a48dfae))
 
 
 ### Flake
@@ -133,6 +139,7 @@ All notable changes to this project will be documented in this file.
 - Automatic update of nixpkgs input ([#973](https://github.com/ngi-nix/forge/issues/973)) - ([b40d3bf](https://github.com/ngi-nix/forge/commit/b40d3bfb6012f3a8bcafee173e06424e6b500d2b))
 - Automatic update of nixpkgs input ([#1001](https://github.com/ngi-nix/forge/issues/1001)) - ([b2bc33f](https://github.com/ngi-nix/forge/commit/b2bc33f7f01efbb46549942c5b64ed0f68ade3d4))
 - Weekly nix flake update - ([a181ced](https://github.com/ngi-nix/forge/commit/a181ced9f09ebbe3f41c26ee1daa31bf08925017))
+- Weekly nix flake update - ([0e51442](https://github.com/ngi-nix/forge/commit/0e51442edf33f37ff3f135bdadb5f2d0b0f4b6bb))
 
 
 ### Miscellaneous Tasks
@@ -147,6 +154,7 @@ All notable changes to this project will be documented in this file.
 - OcamlBuilder.scope -> ocamlBuilder.ocamlPackages - ([cae76d6](https://github.com/ngi-nix/forge/commit/cae76d66d340f4ecf91f5be9977e037161d70e27))
 - Ngi-nix.github.io/forge -> ngi.nixos.org - ([07433b2](https://github.com/ngi-nix/forge/commit/07433b2502a428132682de648655d30aa9aea067))
 - Update CHANGELOG.md - ([739438f](https://github.com/ngi-nix/forge/commit/739438f4950717f0c171ea13b2e0f47fbaa80f93))
+- Update CHANGELOG.md - ([4fcd5a2](https://github.com/ngi-nix/forge/commit/4fcd5a23346628381fa51e600448d702b89cdfbf))
 
 
 ### Other
@@ -174,6 +182,7 @@ All notable changes to this project will be documented in this file.
 - Set maintainerList to inputs.ngi-forge.maintainerList by default - ([dc8ecaf](https://github.com/ngi-nix/forge/commit/dc8ecaf25c9ceb038302474446a4fb884642754a))
 - Update root level options descriptions - ([efb5645](https://github.com/ngi-nix/forge/commit/efb564562dfbe0d3ea8a46de034852852c1aec66))
 - Add offen analytics - ([a24df0d](https://github.com/ngi-nix/forge/commit/a24df0d16f64dd72ee9dbe5ce981dd2a0de39af1))
+- Add composable dev shells; init minimal, ui & ci  ([#921](https://github.com/ngi-nix/forge/issues/921)) - ([325043c](https://github.com/ngi-nix/forge/commit/325043c3610048fbe63aa163210d0ba4ddb43477))
 
 
 ### Performance
@@ -238,6 +247,7 @@ All notable changes to this project will be documented in this file.
 - *bang:* Fix support for python 3.14 - ([732367b](https://github.com/ngi-nix/forge/commit/732367b7a88d2a3a6e208d9d9bf3f5eb410d61c7))
 - *bang:* 0-unstable-2026-06-21 -> 0-unstable-2026-08-27 - ([d5e10e0](https://github.com/ngi-nix/forge/commit/d5e10e0312df170d9998415909d5172baef4c015))
 - *bang:* 0-unstable-2026-08-27 -> 0-unstable-2026-09-01 ([#974](https://github.com/ngi-nix/forge/issues/974)) - ([eb7da4b](https://github.com/ngi-nix/forge/commit/eb7da4bf3519b3846ac115be45a8cfbd9d76c62c))
+- *bang:* 0-unstable-2026-09-01 -> 0-unstable-2026-09-25 - ([8176f49](https://github.com/ngi-nix/forge/commit/8176f49c9ce817a58d1ebb85d04487e55c114dd3))
 - *mustang:* 0.9.37 -> 0.9.38 ([#975](https://github.com/ngi-nix/forge/issues/975)) - ([9829661](https://github.com/ngi-nix/forge/commit/98296611f71a16f2611b476b09a7d64c57184953))
 - *mustang:* 0.9.38 -> 0.9.39 ([#1002](https://github.com/ngi-nix/forge/issues/1002)) - ([6cd1cdb](https://github.com/ngi-nix/forge/commit/6cd1cdb84557d2d21faa11f4ebab3c2ab11e1ee5))
 - *ocaml-quic:* Init at 0-unstable-2026-03-16 - ([0a42697](https://github.com/ngi-nix/forge/commit/0a4269783ba242a6600e658f19a6986a36451797))
@@ -274,6 +284,7 @@ All notable changes to this project will be documented in this file.
 - *{pkgs,apps}.kaidan:* Init - ([ae6acb7](https://github.com/ngi-nix/forge/commit/ae6acb7857a64bdc2ee124e415b0581c0053a518))
 - *{pkgs,apps}.reflection:* Init - ([b5cb1c5](https://github.com/ngi-nix/forge/commit/b5cb1c571f4f2d49d0fcd2f41a1cfa161d9cb9c4))
 - *{pkgs,apps}.snix:* Init ([#934](https://github.com/ngi-nix/forge/issues/934)) - ([d9b98c3](https://github.com/ngi-nix/forge/commit/d9b98c33eb7aef51068ae980788887772b964060))
+- *{pkgs,apps}.torch-lens-maker:* Init - ([e7683fc](https://github.com/ngi-nix/forge/commit/e7683fc0d00fa0e03e417183126b719a24d27217))
 - *{pkgs,apps}.vacask:* Init - ([685d834](https://github.com/ngi-nix/forge/commit/685d8343db65fd96b13ba6c577cf88c1765db3c5))
 - *{pkgs,apps}.vm-builder:* Init ([#925](https://github.com/ngi-nix/forge/issues/925)) - ([5e9015f](https://github.com/ngi-nix/forge/commit/5e9015f5639fb9f07c0781087d563801f286904d))
 - Read service configuration files directly from XDG_CONFIG_HOME - ([1ff0b6f](https://github.com/ngi-nix/forge/commit/1ff0b6fca1ad820e2f8ee037279baf6d619e534c))
@@ -309,6 +320,7 @@ All notable changes to this project will be documented in this file.
 - *ui:* Show runtime badges on small screens - ([d47a3fc](https://github.com/ngi-nix/forge/commit/d47a3fcef70208878a84cb41cf7ede363ce3f436))
 - *ui:* Fix legibility of feedback banner ([#964](https://github.com/ngi-nix/forge/issues/964)) - ([f00365b](https://github.com/ngi-nix/forge/commit/f00365b46f0b8c2518f71a3ea2649187767f124b))
 - *ui:* Improve footer styling - ([386b021](https://github.com/ngi-nix/forge/commit/386b021973b7f014ae0edd861c86922d39a3c787))
+- *ui:* Change max results per page to 16 - ([bfb96ab](https://github.com/ngi-nix/forge/commit/bfb96ab001681748b33707f51d47ac8ed4317a76))
 - Cleanup introspection - ([62db051](https://github.com/ngi-nix/forge/commit/62db051527bcb3368a56b7906070da561caf9b60))
 - Fold runtimes.shell.enable - ([00a0da7](https://github.com/ngi-nix/forge/commit/00a0da7776c6824c4f4a97cd1443aed2090d50a4))
 
@@ -326,6 +338,7 @@ All notable changes to this project will be documented in this file.
 ### User Interface
 
 - Remove nixConfig from example NixOS configuration snippet - ([d1fee92](https://github.com/ngi-nix/forge/commit/d1fee92c4f32b0625ebaf54cafa87aa7f55c23c4))
+- Update runtime tooltips - ([567843f](https://github.com/ngi-nix/forge/commit/567843f930139c11813edb6401a29268efd6a802))
 
 
 ## [0.2.0](https://github.com/ngi-nix/forge/compare/0.1.0..0.2.0) - 2026-06-30
