@@ -38,7 +38,12 @@
             // lib.foldl' (acc: path: acc // import path) { } config.forge.maintainerLists;
         };
         getTestOptions =
-          type: lib.types.submodule (lib.modules.importApply ./test-options.nix { inherit type; });
+          config: type:
+          lib.types.submodule (
+            lib.modules.importApply ./test-options.nix {
+              inherit config type;
+            }
+          );
       };
       modules = [
         {
