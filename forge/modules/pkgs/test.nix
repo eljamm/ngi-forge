@@ -1,15 +1,12 @@
 {
+  getTestOptions,
   config,
   lib,
   ...
 }:
 
 let
-  testOptions = lib.types.submodule (
-    lib.modules.importApply ../test-options.nix {
-      type = "pkg";
-    }
-  );
+  testOptions = (getTestOptions "pkg").getSubOptions { };
 in
 
 {

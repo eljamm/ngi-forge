@@ -1,14 +1,11 @@
 {
+  getTestOptions,
   lib,
   ...
 }:
 
 let
-  testOptions = lib.types.submodule (
-    lib.modules.importApply ../../../test-options.nix {
-      type = "app";
-    }
-  );
+  testOptions = (getTestOptions "app").getSubOptions { };
 in
 
 {
