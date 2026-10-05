@@ -1,9 +1,8 @@
 # module that contains common test options
 
-{ type }:
+{ config, type }:
 
 {
-  config,
   lib,
   ...
 }:
@@ -97,12 +96,11 @@ in
       default =
         {
           pkgs,
-          finalAttrs,
           ...
         }@args:
         let
-          name = "${args.finalApp.name or finalAttrs.pname}-test";
-          packages = [ (args.finalApp or finalAttrs.finalPackage) ] ++ config.packages;
+          name = "${args.finalApp.name or args.finalAttrs.pname}-test";
+          packages = [ (args.finalApp or args.finalAttrs.finalPackage) ] ++ config.packages;
         in
         if config.runner == "bash" then
           pkgs.testers.runCommand {

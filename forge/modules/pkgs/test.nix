@@ -1,11 +1,12 @@
 {
   getTestOptions,
+  config,
   lib,
   ...
 }:
 
 let
-  testOptions = (getTestOptions "pkg").getSubOptions { };
+  testOptions = (getTestOptions config "pkg").getSubOptions { };
 in
 
 {
