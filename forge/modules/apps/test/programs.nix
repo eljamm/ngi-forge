@@ -2,14 +2,20 @@
   lib,
   ...
 }:
+
+let
+  testOptions = lib.types.submodule (
+    lib.modules.importApply ../../test-options.nix {
+      type = "app";
+    }
+  );
+in
+
 {
   options = {
-    packages = lib.mkOption {
-      type = lib.types.listOf lib.types.package;
-      default = [ ];
-      description = "List of packages available in the test script.";
-      example = lib.literalExpression "[ pkgs.curl pkgs.jq ]";
-    };
+    inherit (testOptions)
+      packages
+      ;
 
     script = lib.mkOption {
       type = lib.types.str;
