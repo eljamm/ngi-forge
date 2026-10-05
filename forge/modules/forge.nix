@@ -37,6 +37,8 @@
             (import "${forge-inputs.nixpkgs}/maintainers/maintainer-list.nix")
             // lib.foldl' (acc: path: acc // import path) { } config.forge.maintainerLists;
         };
+        getTestOptions =
+          type: lib.types.submodule (lib.modules.importApply ./test-options.nix { inherit type; });
       };
       modules = [
         {
