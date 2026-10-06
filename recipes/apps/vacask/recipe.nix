@@ -1,5 +1,6 @@
 {
   config,
+  forgeConfig,
   pkgs,
   lib,
   ...
@@ -7,6 +8,7 @@
 
 let
   app = config.apps.vacask;
+  usageSnippets = forgeConfig.forge.snippets.usage app;
 in
 
 {
@@ -24,7 +26,7 @@ in
     };
 
     usage = ''
-      First, ${app.usageSnippets.run-shell}.
+      First, ${usageSnippets.run-shell}.
 
       Then, download one of the [upstream test files](https://codeberg.org/arpadbuermen/VACASK/src/commit/${app.data.testCommit}/test) for testing.
       For example:

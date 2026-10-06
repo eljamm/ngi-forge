@@ -1,11 +1,13 @@
 {
   pkgs,
   config,
+  forgeConfig,
   ...
 }:
 
 let
   app = config.apps.reflection;
+  usageSnippets = forgeConfig.forge.snippets.usage app;
 in
 
 {
@@ -26,7 +28,7 @@ in
 
       If you don't have access to multiple devices you can run still test this by launching multiple instances of the desktop application locally using `dbus-run-session`.
 
-      First, ${app.usageSnippets.run-shell}, then run two instances like so,
+      First, ${usageSnippets.run-shell}, then run two instances like so,
 
       ```bash
       reflection

@@ -1,11 +1,13 @@
 {
   config,
+  forgeConfig,
   pkgs,
   ...
 }:
 
 let
   app = config.apps.vivliostyle;
+  usageSnippets = forgeConfig.forge.snippets.usage app;
 in
 
 {
@@ -24,7 +26,7 @@ in
 
       #### Basic Usage
 
-      First, ${app.usageSnippets.run-shell}, then scaffold a new project:
+      First, ${usageSnippets.run-shell}, then scaffold a new project:
 
       ```bash
       vivliostyle create ./my-project

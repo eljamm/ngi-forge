@@ -1,5 +1,6 @@
 {
   config,
+  forgeConfig,
   pkgs,
   lib,
   ...
@@ -7,6 +8,7 @@
 
 let
   app = config.apps.datalab;
+  usageSnippets = forgeConfig.forge.snippets.usage app;
 in
 
 {
@@ -31,7 +33,7 @@ in
 
       #### GUI
 
-      First, ${app.usageSnippets.run-shell}, then launch the DataLab desktop application:
+      First, ${usageSnippets.run-shell}, then launch the DataLab desktop application:
 
       ```bash
       datalab
@@ -45,7 +47,7 @@ in
 
       #### API
 
-      First, ${app.usageSnippets.run-shell}, which provides a Python environment with DataLab already installed.
+      First, ${usageSnippets.run-shell}, which provides a Python environment with DataLab already installed.
 
       In the example below, we use a [remote proxy](https://datalab-platform.com/en/features/advanced/proxy.html#module-datalab.control.proxy) to programmatically create and display some data.
 

@@ -1,11 +1,13 @@
 {
   config,
+  forgeConfig,
   pkgs,
   ...
 }:
 
 let
   app = config.apps.superbol-studio;
+  usageSnippets = forgeConfig.forge.snippets.usage app;
 in
 
 {
@@ -41,7 +43,7 @@ in
     '';
 
     usage = ''
-      First, ${app.usageSnippets.run-program}.
+      First, ${usageSnippets.run-program}.
 
       To start using the extension on an existing project, open its folder in VS Code (`File > Add Folder to Workspace...`). The extension will start automatically whenever the folder contains files with usual COBOL filename extensions (`.cob`, `.cbl`, `.cpy`, `.cbx`).
 

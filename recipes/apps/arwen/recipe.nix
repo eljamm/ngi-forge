@@ -1,11 +1,13 @@
 {
   config,
+  forgeConfig,
   pkgs,
   ...
 }:
 
 let
   app = config.apps.arwen;
+  usageSnippets = forgeConfig.forge.snippets.usage app;
 in
 
 {
@@ -33,7 +35,7 @@ in
       It's a Rust-based alternative to patchelf and install_name_tool.
     '';
     usage = ''
-      First, ${app.usageSnippets.run-shell}.
+      First, ${usageSnippets.run-shell}.
 
       Next, get an executable you want to patch.
       For the examples below, we will be using the project itself:

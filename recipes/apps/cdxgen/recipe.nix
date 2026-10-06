@@ -1,5 +1,6 @@
 {
   config,
+  forgeConfig,
   pkgs,
   lib,
   ...
@@ -7,6 +8,7 @@
 
 let
   app = config.apps.cdxgen;
+  usageSnippets = forgeConfig.forge.snippets.usage app;
 in
 
 {
@@ -28,7 +30,7 @@ in
     usage = ''
       ##### SBOM for local projects
 
-      First, ${app.usageSnippets.run-shell}.
+      First, ${usageSnippets.run-shell}.
 
       Then, navigate to the project you want to use.
       For the examples below, we will use the [`npm-smoke`](https://github.com/cdxgen/cdxgen/tree/${app.data.cdxgenCommit}/test/repotests/npm-smoke) test repository.
@@ -88,7 +90,7 @@ in
 
       ##### cdxgen server
 
-      First, ${app.usageSnippets.run-container} or ${app.usageSnippets.run-nixos}.
+      First, ${usageSnippets.run-container} or ${usageSnippets.run-nixos}.
       By default, it will be accessible from `http://127.0.0.1:${app.data.mainPort}`, but you can change this from the application recipe.
 
       Next, to scan a local path, run the following:
