@@ -96,11 +96,16 @@ in
       default =
         {
           pkgs,
+          mainPackage ? null,
           ...
         }@args:
         let
           name = "${args.finalApp.name or args.finalAttrs.pname}-test";
-          packages = [ (args.finalApp or args.finalAttrs.finalPackage) ] ++ config.packages;
+          packages = [
+            (args.finalApp or args.finalAttrs.finalPackage)
+          ]
+          ++ lib.optional (mainPackage != null) mainPackage
+          ++ config.packages;
         in
         if config.runner == "bash" then
           pkgs.testers.runCommand {

@@ -61,7 +61,10 @@
               test-services-nixos = app.test.services.result.build;
             }
             // lib.optionalAttrs (app.test.programs.script != "") {
-              test-programs = app.test.programs.derivation { inherit pkgs finalApp; };
+              test-programs = app.test.programs.derivation {
+                inherit pkgs finalApp;
+                inherit (app.programs) mainPackage;
+              };
             };
         in
         lib.fix (self: {
