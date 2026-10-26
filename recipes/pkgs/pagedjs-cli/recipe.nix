@@ -17,7 +17,7 @@
       hash = "sha256-393Q2B64lIPSYIckPOqVdhhQiHKcUE1jOpsYlFsiJvg=";
     };
 
-    build.npmPackageBuilder = {
+    build.builders.npm = {
       enable = true;
       packages = {
         build = [

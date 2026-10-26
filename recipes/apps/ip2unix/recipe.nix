@@ -5,7 +5,7 @@
 
 {
   pkgs.ip2unix = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.ip2unix;
     };

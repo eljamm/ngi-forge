@@ -13,7 +13,7 @@ in
 
 {
   pkgs.zenroom = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.zenroom;
     };

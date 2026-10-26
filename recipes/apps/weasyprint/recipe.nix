@@ -5,7 +5,7 @@
 
 {
   pkgs.python3-weasyprint = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3Packages.weasyprint;
     };

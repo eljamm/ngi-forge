@@ -1,16 +1,15 @@
 {
   config,
   lib,
-  packageBuilderModule,
   ...
 }:
 
 {
   imports = [
-    (packageBuilderModule {
-      name = "ocamlBuilder";
-      imports = ./options.nix;
-      mkDerivation = config.build.ocamlBuilder.buildDunePackage;
+    (lib.modules.importApply ./builder.nix {
+      name = "ocaml";
+      imports = ocaml/options.nix;
+      mkDerivation = config.build.builders.ocaml.buildDunePackage;
       attrs =
         builder: finalAttrs: previousAttrs:
         {

@@ -4,7 +4,7 @@
 }:
 {
   pkgs.python3-pycm = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3.pkgs.pycm;
     };

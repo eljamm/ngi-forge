@@ -5,7 +5,7 @@
 
 {
   pkgs.alive2 = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.alive2;
     };

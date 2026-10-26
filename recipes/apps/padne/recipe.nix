@@ -5,11 +5,11 @@
 }:
 
 {
-  pkgs.python3-padne.build.identityBuilder = {
+  pkgs.python3-padne.build.builders.identity = {
     enable = true;
     derivation = pkgs.pkgsOriginal.python3Packages.padne;
   };
-  pkgs.padne.build.identityBuilder = {
+  pkgs.padne.build.builders.identity = {
     enable = true;
     derivation = pkgs.pkgsOriginal.padne;
   };

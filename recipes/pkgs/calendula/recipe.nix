@@ -16,7 +16,7 @@
       hash = "sha256-xMd4T+vQHcnqSVPXSZ3suQuMKmWpaI4T2gmljrVPk0w=";
     };
 
-    build.rustPackageBuilder = {
+    build.builders.rust = {
       enable = true;
       cargoHash = "sha256-FIcGgPsOi2e+0dU5FRCVvlEkcZoxQ4H+Uro60wYpBQc=";
     };

@@ -5,7 +5,7 @@
 
 {
   pkgs.servo = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.servo;
     };

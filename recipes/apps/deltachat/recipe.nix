@@ -5,14 +5,14 @@
 
 {
   pkgs.deltachat-desktop = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.deltachat-desktop;
     };
   };
 
   pkgs.deltachat-repl = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.deltachat-repl;
     };

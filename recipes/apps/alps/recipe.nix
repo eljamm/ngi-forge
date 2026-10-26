@@ -5,7 +5,7 @@
 
 {
   pkgs.alps = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.alps;
     };

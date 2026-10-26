@@ -15,14 +15,14 @@ let
 in
 {
   pkgs.kaitai-struct-compiler = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.kaitai-struct-compiler;
     };
   };
 
   pkgs.python3-kaitaistruct = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3.pkgs.kaitaistruct;
     };

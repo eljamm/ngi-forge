@@ -16,7 +16,7 @@
       hash = "sha256-vUJSuazo5C23UacQGKxTXrLek6vEu9+S9PzfBjXa9Nc=";
     };
 
-    build.goPackageBuilder = {
+    build.builders.go = {
       enable = true;
       packages.build = [
         pkgs.pkg-config

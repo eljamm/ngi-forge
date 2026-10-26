@@ -19,7 +19,7 @@
     };
 
     build = {
-      rustPackageBuilder = {
+      builders.rust = {
         enable = true;
         cargoHash = "sha256-gOBDc/SNOI06rpb87alR2G8fTHM/iXnpZRy6HAqWiE4=";
         packages.check = with pkgs; [

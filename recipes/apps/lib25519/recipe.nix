@@ -5,7 +5,7 @@
 
 {
   pkgs.lib25519 = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.lib25519;
     };

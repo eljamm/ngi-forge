@@ -6,14 +6,14 @@
 
 {
   pkgs.qlever = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.qlever;
     };
   };
 
   pkgs.qlever-control = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.qlever-control;
     };

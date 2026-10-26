@@ -10,13 +10,14 @@ class SourceType(Enum):
 
 
 class BuilderType(Enum):
-    STANDARD = auto()
-    RUST = auto()
     GO = auto()
     NPM = auto()
+    OCAML = auto()
     PNPM = auto()
-    PYTHON_APP = auto()
-    PYTHON_PACKAGE = auto()
+    PYTHON = auto()
+    PYTHON_MODULE = auto()
+    RUST = auto()
+    STANDARD = auto()
 
 
 class ForgeHost(Enum):

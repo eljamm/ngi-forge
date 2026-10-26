@@ -15,7 +15,7 @@
       hash = "sha256-q0JoW8Tw25m+Hp9W/LxzC3yt78J1AmeV1G3h41RHIOI=";
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
     };
 

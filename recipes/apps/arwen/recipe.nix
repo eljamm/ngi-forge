@@ -12,14 +12,14 @@ in
 
 {
   pkgs.arwen = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.arwen;
     };
   };
 
   pkgs.python3-py-arwen = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3.pkgs.py-arwen;
     };

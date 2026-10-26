@@ -5,7 +5,7 @@
 
 {
   pkgs.fractal = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.fractal;
     };

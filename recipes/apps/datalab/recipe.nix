@@ -13,13 +13,13 @@ in
 
 {
   pkgs.datalab = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.datalab;
     };
   };
   pkgs.python3-datalab-platform = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3.pkgs.datalab-platform;
     };

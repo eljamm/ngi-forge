@@ -5,7 +5,7 @@
 }:
 {
   pkgs.f3d = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.f3d;
     };

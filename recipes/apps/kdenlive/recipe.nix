@@ -5,7 +5,7 @@
 
 {
   pkgs.kdenlive = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.kdePackages.kdenlive;
     };

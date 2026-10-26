@@ -122,19 +122,19 @@ If the repository uses git submodules, add `source.submodules = true`.
 
 Enable exactly one builder and configure it as needed.
 
-| Condition                                                     | Builder                |
-| ------------------------------------------------------------- | ---------------------- |
-| CMake, Autotools, or Makefile                                 | `standardBuilder`      |
-| Go                                                            | `goPackageBuilder`     |
-| Python with CLI tools (`[project.scripts]` or `entry_points`) | `pythonAppBuilder`     |
-| Python library (no executables)                               | `pythonPackageBuilder` |
-| Rust                                                          | `rustPackageBuilder`   |
+| Condition                                                     | Builder                 |
+| ------------------------------------------------------------- | ----------------------- |
+| CMake, Autotools, or Makefile                                 | `builders.standard`     |
+| Go                                                            | `builders.go`           |
+| Python with CLI tools (`[project.scripts]` or `entry_points`) | `builders.python`       |
+| Python library (no executables)                               | `builders.pythonModule` |
+| Rust                                                          | `builders.rust`         |
 
 Also, add dependencies using `packages.build`, `packages.run` or
 `packages.check` options.
 
 ```nix
-build.standardBuilder = {
+build.builders.standard = {
   enable = true;
 
   # build-time dependencies

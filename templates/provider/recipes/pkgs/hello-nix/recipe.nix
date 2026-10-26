@@ -15,7 +15,7 @@
       path = ./src;
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
     };
 

@@ -15,7 +15,7 @@ let
 in
 {
   pkgs.krill = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.krill;
     };

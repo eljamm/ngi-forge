@@ -19,7 +19,7 @@ in
       hash = "sha256-LOkDqGsu6oyw/AyHScLOntTzKTaQbNqagw3Wlym5Y0I=";
     };
 
-    build.rustPackageBuilder = {
+    build.builders.rust = {
       enable = true;
       cargoHash = "sha256-L6xQcfjo9buZzCZ4rFhCifrRKNxBOg/I8KYKfBo0cTE=";
       packages.build = with pkgs; [

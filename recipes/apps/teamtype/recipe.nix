@@ -5,14 +5,14 @@
 
 {
   pkgs.teamtype = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.teamtype;
     };
   };
 
   pkgs.vimPlugins-teamtype = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.vimPlugins.teamtype;
     };

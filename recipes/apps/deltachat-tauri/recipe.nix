@@ -7,7 +7,7 @@
   pkgs.deltachat-tauri = {
     # TODO: fix package breakage in nixpkgs, see https://github.com/NixOS/nixpkgs/pull/556259
     broken = true;
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.deltachat-tauri;
     };

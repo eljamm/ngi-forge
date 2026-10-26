@@ -28,7 +28,7 @@
           hash = "sha256-SVAe68oVTuQHcVD+KbbRPm0wNrrV4kc8VG20a1BUZ1w=";
         };
       };
-      standardBuilder = {
+      builders.standard = {
         enable = true;
         packages.build = [
           pkgs.pkg-config

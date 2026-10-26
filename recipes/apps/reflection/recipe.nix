@@ -11,7 +11,7 @@ let
 in
 
 {
-  pkgs.reflection.build.identityBuilder = {
+  pkgs.reflection.build.builders.identity = {
     enable = true;
     derivation = pkgs.pkgsOriginal.reflection;
   };

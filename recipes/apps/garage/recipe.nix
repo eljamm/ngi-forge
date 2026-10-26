@@ -5,7 +5,7 @@
 
 {
   pkgs.garage = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.garage_2;
     };

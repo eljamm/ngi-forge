@@ -20,7 +20,7 @@ in
       hash = "sha256-42QqZeA3OfjAM86ysHXYgn2ZPJ7HNSjInW0+jHcEGmY=";
     };
 
-    build.rustPackageBuilder = {
+    build.builders.rust = {
       enable = true;
       cargoHash = "sha256-4irWiRYyi51PbnAXly7aG2mXDnLstGR//UaZwMvpVas=";
       packages.check = [ pkgs.postgresql ];

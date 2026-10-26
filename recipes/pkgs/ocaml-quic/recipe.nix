@@ -40,7 +40,7 @@ in
       hash = "sha256-7Fn379yEDdGVrg+5QMe7QMqGpq2986r/fs+8SepIYp4=";
     };
 
-    build.ocamlBuilder = {
+    build.builders.ocaml = {
       enable = true;
 
       packages = {
@@ -79,7 +79,7 @@ in
       license
       ;
 
-    build.ocamlBuilder = {
+    build.builders.ocaml = {
       enable = true;
       packages.dependencies = with ocamlPackages; [
         angstrom
@@ -103,7 +103,7 @@ in
       license
       ;
 
-    build.ocamlBuilder = {
+    build.builders.ocaml = {
       enable = true;
       packages.dependencies = with ocamlPackages; [
         angstrom
@@ -159,7 +159,7 @@ in
       license
       ;
 
-    build.ocamlBuilder = {
+    build.builders.ocaml = {
       enable = true;
       packages.dependencies = with ocamlPackages; [
         hex
@@ -185,7 +185,7 @@ in
       license
       ;
 
-    build.ocamlBuilder = {
+    build.builders.ocaml = {
       enable = true;
       packages.dependencies = with ocamlPackages; [
         eio

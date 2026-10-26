@@ -1,14 +1,13 @@
 {
   lib,
   pkgs,
-  packageBuilderModule,
   ...
 }:
 {
   imports = [
-    (packageBuilderModule {
-      name = "pnpmPackageBuilder";
-      imports = ./options.nix;
+    (lib.modules.importApply ./builder.nix {
+      name = "pnpm";
+      imports = pnpm/options.nix;
       mkDerivation = pkgs.stdenvNoCC.mkDerivation;
       attrs = builder: finalAttrs: previousAttrs: {
         pnpmDeps = pkgs.fetchPnpmDeps {

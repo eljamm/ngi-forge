@@ -4,19 +4,19 @@
 }:
 {
   pkgs.kikit = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.kikit;
     };
   };
   pkgs.kicadAddons-kikit = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.kicadAddons.kikit;
     };
   };
   pkgs.kicadAddons-kikit-library = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.kicadAddons.kikit-library;
     };

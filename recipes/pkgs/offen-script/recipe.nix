@@ -13,7 +13,7 @@
       license
       ;
 
-    build.pnpmPackageBuilder = {
+    build.builders.pnpm = {
       enable = true;
       pnpmDepsHash = "sha256-Vmv4aESpAvE9Dg28WpSPhtEEBr8q/BfqrJl5EXC0nl4=";
       buildScript = "build";

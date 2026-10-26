@@ -9,17 +9,8 @@
 {
   imports = [
     ../assertions-warnings.nix
-    ../builders/identity-builder
-    ../builders/standard-builder
-    ../builders/go-builder
-    ../builders/npm-package-builder
-    ../builders/ocaml-builder
-    ../builders/pnpm-package-builder
-    ../builders/python-app-builder
-    ../builders/python-package-builder
-    ../builders/rust-package-builder
     ../recipe-metadata.nix
-    pkg/phases.nix
+    pkg/build.nix
   ];
   config._recipeType = "pkgs";
   options = {
@@ -184,58 +175,6 @@
       };
     };
 
-    # Build configuration
-    build = lib.mkOption {
-      description = "Package build options.";
-      type = lib.types.submoduleWith {
-        inherit specialArgs;
-        modules = [
-          pkg/env.nix
-          {
-            options = {
-              # Builder-specific options are defined in separate modular
-              # files in forge/modules/builders/ directory.
-              # Each builder module defines its own options and configuration logic.
-
-              # Common builder options (available to all builders)
-              extraAttrs = lib.mkOption {
-                # `lazyAttrsOf` enables to use `pkgs` inside `extraAttrs`.
-                type = lib.types.lazyAttrsOf lib.types.anything;
-                default = { };
-                description = ''
-                  Extra attributes merged into the derivation produced by the selected builder.
-
-                  Use this to pass any `stdenv.mkDerivation` attribute
-                  not exposed as a dedicated option.
-                  Beware that attributes set here do not take precedence over builder's options,
-                  so use the builder's options when they exist.
-
-                  Expert option. For more information see the
-                  [Nixpkgs manual](https://nixos.org/manual/nixpkgs/unstable/).
-                '';
-              };
-              debug = lib.mkOption {
-                type = lib.types.bool;
-                default = false;
-                description = ''
-                  Enable interactive package build environment for debugging.
-
-                  Launch environment:
-
-                  ```
-                  mkdir dev && cd dev
-                  nix develop .#pkgs.''${package}
-                  ```
-
-                  and follow instructions.
-                '';
-              };
-            };
-          }
-        ];
-      };
-    };
-
     # Test configuration
     test = lib.mkOption {
       type = lib.types.submoduleWith {
@@ -306,11 +245,10 @@
   config = {
     assertions =
       let
-        builders = lib.filterAttrs (name: _: lib.hasSuffix "Builder" name) config.build;
-        builderNames = map (name: "build." + name) (lib.attrNames builders);
+        builderNames = map (name: "build.builders.${name}") (lib.attrNames config.build.builders);
 
-        enabledBuilders = lib.filterAttrs (_: b: b.enable) builders;
-        enabledBuilderNames = map (name: "build." + name) (lib.attrNames enabledBuilders);
+        enabledBuilders = lib.filterAttrs (_: b: b.enable) config.build.builders;
+        enabledBuilderNames = map (name: "build.${name}") (lib.attrNames enabledBuilders);
 
         enabledBuildersCount = lib.length enabledBuilderNames;
       in
@@ -321,7 +259,7 @@
               config.source.git == null
               && config.source.url == null
               && config.source.path == null
-              && !config.build.identityBuilder.enable
+              && !config.build.builders.identity.enable
             );
           message = ''
             Package '${config.pname}': one of sources options must be defined.
@@ -347,7 +285,7 @@
     warnings = [
       {
         condition =
-          config.source.hash == "" && config.source.path == null && !config.build.identityBuilder.enable;
+          config.source.hash == "" && config.source.path == null && !config.build.builders.identity.enable;
         message = ''
           Package '${config.pname}': source.hash is empty.
           Correct hash will be printed in the error message when package is built.

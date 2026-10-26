@@ -13,7 +13,7 @@
       license
       ;
 
-    build.npmPackageBuilder = {
+    build.builders.npm = {
       enable = true;
       npmDepsHash = "sha256-Zq7+HLPO+lVYJflz7SK1rTgQtNSgbx2mZ7wFd6McBCo=";
     };

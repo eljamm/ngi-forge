@@ -20,7 +20,7 @@ in
       hash = "sha256-68ODqeOBp2tynFgLgk4e5AoVcZAwk27Vrggy493F9QU=";
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
 
       packages.build = with pkgs; [

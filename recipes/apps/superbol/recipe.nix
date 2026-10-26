@@ -14,7 +14,7 @@ in
   pkgs = {
     superbol-studio = {
       description = "Modern development environment for COBOL in VSCode.";
-      build.identityBuilder = {
+      build.builders.identity = {
         enable = true;
         derivation = pkgs.pkgsOriginal.vscode-with-extensions.override {
           vscode = pkgs.pkgsOriginal.vscodium.fhsWithPackages (p: [

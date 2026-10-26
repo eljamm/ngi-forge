@@ -9,7 +9,7 @@ let
 in
 {
   pkgs.typst = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.typst;
     };

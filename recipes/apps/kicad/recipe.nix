@@ -4,7 +4,7 @@
 }:
 {
   pkgs.kicad = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.kicad;
     };

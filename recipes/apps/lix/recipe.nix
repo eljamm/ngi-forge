@@ -6,7 +6,7 @@
 {
   pkgs.lix = {
     # TODO expose all of lixPackageSets, once https://github.com/ngi-nix/forge/issues/829 is solved
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.lixPackageSets.stable.lix;
     };

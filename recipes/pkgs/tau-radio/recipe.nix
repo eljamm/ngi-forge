@@ -17,7 +17,7 @@
       hash = "sha256-ddF0N9SJWw5PSbGL05ZUDjjzJRfmvj4gQ0tyw0YCr2k=";
     };
 
-    build.rustPackageBuilder = {
+    build.builders.rust = {
       enable = true;
       packages = {
         build = with pkgs; [

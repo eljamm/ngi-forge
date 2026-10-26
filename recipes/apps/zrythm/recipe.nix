@@ -8,7 +8,7 @@ let
 in
 {
   pkgs.zrythm = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       # TODO: remove preFixup override once https://github.com/NixOS/nixpkgs/pull/570791 is in nixos-unstable
       derivation = pkgs.pkgsOriginal.zrythm.overrideAttrs (old: {
