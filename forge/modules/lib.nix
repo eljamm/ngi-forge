@@ -133,5 +133,8 @@
 
     isBroken =
       x: lib.attrByPath [ "forge" "broken" ] false x || lib.attrByPath [ "meta" "broken" ] false x;
+
+    isUnfree =
+      x: lib.attrByPath [ "forge" "unfree" ] false x || lib.attrByPath [ "meta" "unfree" ] false x;
   };
 }
