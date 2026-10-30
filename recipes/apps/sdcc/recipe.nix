@@ -9,7 +9,7 @@ let
 in
 {
   pkgs.sdcc = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.sdcc;
     };

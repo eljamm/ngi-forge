@@ -4,7 +4,7 @@
 }:
 {
   pkgs.badkeys = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.badkeys.overridePythonAttrs (old: {
         doCheck = false;

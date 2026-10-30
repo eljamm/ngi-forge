@@ -9,16 +9,8 @@
 {
   imports = [
     ../assertions-warnings.nix
-    ../builders/identity-builder
-    ../builders/standard-builder
-    ../builders/go-builder
-    ../builders/npm-package-builder
-    ../builders/ocaml-builder
-    ../builders/pnpm-package-builder
-    ../builders/python-app-builder
-    ../builders/python-package-builder
-    ../builders/rust-package-builder
     ../recipe-metadata.nix
+    pkg/build.nix
   ];
   config._recipeType = "pkgs";
   options = {
@@ -181,83 +173,6 @@
         '';
         example = true;
       };
-      patches = lib.mkOption {
-        type = lib.types.listOf lib.types.path;
-        default = [ ];
-        description = ''
-          List of patch files to be applied to the source code.
-
-          Patches are applied in the order specified using the patch command.
-        '';
-        example = lib.literalExpression "[ ./fix-build.patch ./add-feature.patch ]";
-      };
-    };
-
-    # Build configuration
-    build = lib.mkOption {
-      description = "Package build options.";
-      type = lib.types.submoduleWith {
-        inherit specialArgs;
-        modules = [
-          pkg/env.nix
-          {
-            options = {
-              # Builder-specific options are defined in separate modular
-              # files in forge/modules/builders/ directory.
-              # Each builder module defines its own options and configuration logic.
-
-              # Common builder options (available to all builders)
-              extraAttrs = lib.mkOption {
-                # `lazyAttrsOf` enables to use `pkgs` inside `extraAttrs`.
-                type = lib.types.lazyAttrsOf lib.types.anything;
-                default = { };
-                description = ''
-                  Extra attributes merged into the derivation produced by the selected builder.
-
-                  Use this to pass builder-specific phase hooks (`preConfigure`,
-                  `postInstall`, …), environment variables, or any other
-                  `stdenv.mkDerivation` attribute not exposed as a dedicated option.
-                  Attributes set here take precedence over the builder defaults.
-
-                  Expert option. For more information see the
-                  [Nixpkgs manual](https://nixos.org/manual/nixpkgs/unstable/).
-                '';
-                example = lib.literalExpression ''
-                  {
-                    # Set HOME for tools that require a writable home directory
-                    preConfigure = "export HOME=$(mktemp -d)";
-
-                    # Remove unwanted files from the output
-                    postInstall = "rm $out/share/doc/my-package/INSTALL";
-
-                    # Pass extra flags to configure
-                    configureFlags = [ "--disable-static" "--enable-shared" ];
-
-                    # Set an environment variable for the build
-                    MY_VARIABLE = "value";
-                  }
-                '';
-              };
-              debug = lib.mkOption {
-                type = lib.types.bool;
-                default = false;
-                description = ''
-                  Enable interactive package build environment for debugging.
-
-                  Launch environment:
-
-                  ```
-                  mkdir dev && cd dev
-                  nix develop .#pkgs.''${package}
-                  ```
-
-                  and follow instructions.
-                '';
-              };
-            };
-          }
-        ];
-      };
     };
 
     # Test configuration
@@ -308,6 +223,12 @@
     };
 
     result = {
+      derivationAttrs = lib.mkOption {
+        type = with lib.types; attrsOf anything;
+        internal = true;
+        default = { };
+        description = "Some attributes for the resulting derivation of the package.";
+      };
       derivation = lib.mkOption {
         type = lib.types.package;
         internal = true;
@@ -324,11 +245,10 @@
   config = {
     assertions =
       let
-        builders = lib.filterAttrs (name: _: lib.hasSuffix "Builder" name) config.build;
-        builderNames = map (name: "build." + name) (lib.attrNames builders);
+        builderNames = map (name: "build.builders.${name}") (lib.attrNames config.build.builders);
 
-        enabledBuilders = lib.filterAttrs (_: b: b.enable) builders;
-        enabledBuilderNames = map (name: "build." + name) (lib.attrNames enabledBuilders);
+        enabledBuilders = lib.filterAttrs (_: b: b.enable) config.build.builders;
+        enabledBuilderNames = map (name: "build.${name}") (lib.attrNames enabledBuilders);
 
         enabledBuildersCount = lib.length enabledBuilderNames;
       in
@@ -339,7 +259,7 @@
               config.source.git == null
               && config.source.url == null
               && config.source.path == null
-              && !config.build.identityBuilder.enable
+              && !config.build.builders.identity.enable
             );
           message = ''
             Package '${config.pname}': one of sources options must be defined.
@@ -365,7 +285,7 @@
     warnings = [
       {
         condition =
-          config.source.hash == "" && config.source.path == null && !config.build.identityBuilder.enable;
+          config.source.hash == "" && config.source.path == null && !config.build.builders.identity.enable;
         message = ''
           Package '${config.pname}': source.hash is empty.
           Correct hash will be printed in the error message when package is built.

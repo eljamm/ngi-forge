@@ -13,7 +13,7 @@ in
 
 {
   pkgs.cdxgen = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.cdxgen;
     };

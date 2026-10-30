@@ -4,14 +4,14 @@
 }:
 {
   pkgs.py3dtiles = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3Packages.toPythonApplication pkgs.python3-py3dtiles;
     };
   };
 
   pkgs.python3-py3dtiles = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3.pkgs.py3dtiles;
     };

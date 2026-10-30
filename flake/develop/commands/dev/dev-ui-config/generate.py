@@ -39,7 +39,7 @@ pkgs."{name}" = {{
   source.url = "https://example.com/{name}.tar.gz";
   source.hash = lib.fakeHash;
 
-  build.standardBuilder.enable = true;
+  build.builders.standard.enable = true;
 }};
 }}
 """

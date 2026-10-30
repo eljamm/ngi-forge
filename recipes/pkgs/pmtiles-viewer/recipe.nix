@@ -16,19 +16,16 @@
       hash = "sha256-75hCWdmN94er7ZcdO3SKmGPjKoDPZKdvJugvKo43uVA=";
     };
 
-    build.npmPackageBuilder = {
+    build.builders.npm = {
       enable = true;
       npmDepsHash = "sha256-JLHIlQKGrNXHyRT/VhQznF8elLl4xAa1XTSfLFfQrLU=";
     };
 
-    build.extraAttrs = {
-      sourceRoot = "source/app";
-
-      installPhase = ''
-        runHook preInstall
+    build.phases = {
+      unpack.sourceRoot = "source/app";
+      install.script.main = ''
         mkdir -p $out/share/pmtiles-app
         cp -r dist/* $out/share/pmtiles-app/
-        runHook postInstall
       '';
     };
 

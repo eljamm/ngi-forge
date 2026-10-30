@@ -5,7 +5,7 @@
 
 {
   pkgs.kaidan = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.kaidan;
     };

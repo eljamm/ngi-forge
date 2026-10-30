@@ -13,11 +13,11 @@ let
 in
 
 {
-  pkgs.python3-emerge.build.identityBuilder = {
+  pkgs.python3-emerge.build.builders.identity = {
     enable = true;
     derivation = pkgs.python3Packages.emerge;
   };
-  pkgs.emerge.build.identityBuilder = {
+  pkgs.emerge.build.builders.identity = {
     enable = true;
     derivation = pkgs.python3Packages.toPythonApplication pkgs.python3-emerge;
   };

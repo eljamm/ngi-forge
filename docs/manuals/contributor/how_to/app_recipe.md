@@ -582,11 +582,11 @@ nix build .#apps.<app-name>.test-services-nixos --print-build-logs
 
 ## Re-exporting packages
 
-If exposing a package already in nixpkgs, consider re-exporting the package using the new [`build.identityBuilder`](https://ngi.nixos.org/recipe/options?p=apps&p=pkgs&q=identi#pkgs.%3Cname%3E.build.identityBuilder.enable). This will allow the application to be accessed under the `pkgs` attribute path (i.e. `pkgs.<app-name>`). To do this, outside of the `apps.<app-name>` attribute set, add the following block:
+If exposing a package already in nixpkgs, consider re-exporting the package using the new [`build.builders.identity`](https://ngi.nixos.org/recipe/options?p=apps&p=pkgs&q=identity#pkgs.%3Cname%3E.build.builders.identity.enable). This will allow the application to be accessed under the `pkgs` attribute path (i.e. `pkgs.<app-name>`). To do this, outside of the `apps.<app-name>` attribute set, add the following block:
 
 ```nix
 pkgs.<app-name> = {
-  build.identityBuilder = {
+  build.builders.identity = {
     enable = true;
     derivation = pkgs.pkgsOriginal.<app-name>;
   };

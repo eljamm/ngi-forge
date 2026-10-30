@@ -200,13 +200,14 @@ class RecipeParser:
 
     def _parse_builder(self, text: str) -> tuple[BuilderType, BuilderHashes]:
         builder_map: dict[str, BuilderType] = {
-            "standard": BuilderType.STANDARD,
-            "rustPackage": BuilderType.RUST,
-            "goPackage": BuilderType.GO,
+            "go": BuilderType.GO,
             "npm": BuilderType.NPM,
+            "ocaml": BuilderType.OCAML,
             "pnpm": BuilderType.PNPM,
-            "pythonApp": BuilderType.PYTHON_APP,
-            "pythonPackage": BuilderType.PYTHON_PACKAGE,
+            "python": BuilderType.PYTHON,
+            "pythonModule": BuilderType.PYTHON_MODULE,
+            "rust": BuilderType.RUST,
+            "standard": BuilderType.STANDARD,
         }
 
         for match in re.finditer(regexes.BUILDER_DECL, text):

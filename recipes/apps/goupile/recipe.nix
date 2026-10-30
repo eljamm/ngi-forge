@@ -5,7 +5,7 @@
 
 {
   pkgs.goupile = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.goupile;
     };

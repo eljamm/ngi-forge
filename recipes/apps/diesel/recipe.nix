@@ -4,7 +4,7 @@
 }:
 {
   pkgs.diesel-cli = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.diesel-cli;
     };

@@ -17,7 +17,7 @@
       hash = "sha256-EGlqD3611sG3YTVe74H49PB8Hj1NsKYhLANg5VAQ0wg=";
     };
 
-    build.goPackageBuilder = {
+    build.builders.go = {
       enable = true;
       vendorHash = "sha256-AeQa5oaOEB/50aPCRq702vMEtEctwP+jU5C6zB+3XR0=";
       ldflags = [
@@ -27,10 +27,10 @@
       modRoot = "server";
     };
 
-    build.extraAttrs = {
+    build.phases = {
       # Copy JS frontend assets into public/static before building.
       # Note: preBuild runs after configurePhase which cds into modRoot (server/).
-      preBuild = ''
+      build.script.pre = ''
         cp -rT --no-preserve=mode ${pkgs.offen-script} public/static
         cp -rT --no-preserve=mode ${pkgs.offen-vault} public/static
         cp -rT --no-preserve=mode ${pkgs.offen-auditorium} public/static

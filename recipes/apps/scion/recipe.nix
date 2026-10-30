@@ -9,7 +9,7 @@ let
 in
 {
   pkgs.scion = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       # Ship local topology tools adapted to run inside Nix shell environment
       derivation = pkgs.pkgsOriginal.scion.overrideAttrs (previousAttrs: {

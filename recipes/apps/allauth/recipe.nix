@@ -7,7 +7,7 @@
 {
   pkgs.python3-django-allauth = {
     description = "Integrated set of Django applications addressing authentication and account management.";
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3.pkgs.django-allauth;
     };

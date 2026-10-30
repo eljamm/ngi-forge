@@ -5,7 +5,7 @@
 
 {
   pkgs.xrsh = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.xrsh;
     };

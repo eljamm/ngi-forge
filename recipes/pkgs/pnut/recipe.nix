@@ -15,16 +15,14 @@
       hash = "sha256-q0JoW8Tw25m+Hp9W/LxzC3yt78J1AmeV1G3h41RHIOI=";
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
     };
 
-    build.extraAttrs = {
-      installPhase = ''
-        mkdir -p $out/bin
-        make install PREFIX=$out
-      '';
-    };
+    build.phases.install.script.main = ''
+      mkdir -p $out/bin
+      make install PREFIX=$out
+    '';
 
     test.script = ''
       echo "int main(void) { return 0; }" > /tmp/test.c

@@ -20,7 +20,7 @@ in
       hash = "sha256-aqhxcknSaOFZVUD7730vkyuG+H/zsD9pFdApl9cYGFU=";
     };
 
-    build.npmPackageBuilder = {
+    build.builders.npm = {
       enable = true;
       npmDepsHash = "sha256-RWLtRUKNPXqjALc2WNDvRriUSgdcwbon4LivZC/CIeo=";
     };

@@ -2,15 +2,10 @@
   config,
   lib,
   forge-lib,
-  packageBuilderModule,
   pkgs,
   ...
 }:
 {
-  imports = [
-    ./builders/shared
-  ];
-
   options.forge = lib.mkOption {
     type = lib.types.submoduleWith {
       modules = [
@@ -30,7 +25,6 @@
                   specialArgs = specialArgs // {
                     enable = forgeArgs.config.enable;
                     forgeOptions = forgeArgs.options;
-                    inherit packageBuilderModule;
                   };
                   modules = [
                     ./pkgs/pkg.nix

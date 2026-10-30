@@ -5,7 +5,7 @@
 
 {
   pkgs.rotonda = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.rotonda;
     };

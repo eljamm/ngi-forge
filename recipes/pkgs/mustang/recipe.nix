@@ -21,7 +21,7 @@ in
       hash = "sha256-9Rbm2dP5Fyto5sQ3dX3vqecbNqBVIZWAFeZMbSOx7qI=";
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
       packages.build = with pkgs; [
         yarn

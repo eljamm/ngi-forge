@@ -14,7 +14,7 @@
 
     source.path = ./src;
 
-    build.goPackageBuilder = {
+    build.builders.go = {
       enable = true;
       vendorHash = "sha256-VTXiI77KaRZWQtbTXbWT2IHPDT9TIxklKP64Z0ip+Dc=";
       packages.run = [ pkgs.postgresql.lib ];

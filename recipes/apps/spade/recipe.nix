@@ -5,14 +5,14 @@
 
 {
   pkgs.spade = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.spade;
     };
   };
 
   pkgs.swim = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.swim;
     };

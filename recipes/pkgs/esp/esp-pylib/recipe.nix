@@ -17,7 +17,7 @@
       hash = "sha256-wj9Enkaxj6LlNfJlmditKFZ8lKfVq9SbQg8f5xIyXP8=";
     };
 
-    build.pythonPackageBuilder = {
+    build.builders.pythonModule = {
       enable = true;
       packages = {
         build-system = with pkgs.python3Packages; [

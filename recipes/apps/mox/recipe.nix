@@ -7,7 +7,7 @@
 
 {
   pkgs.mox = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.mox;
     };

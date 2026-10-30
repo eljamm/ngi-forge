@@ -12,7 +12,7 @@ FIELD_PNPM_DEPS_HASH = r'pnpmDepsHash\s*=\s*"([^"]*)"'
 
 PACKAGE_BLOCK = r"pkgs\.([\w-]+)\s*=\s*\{"
 PACKAGE_SELF_REFERENCE = r"\$\{config\.pkgs\..*\.version\}"
-BUILDER_DECL = r"(\w+)Builder\s*=\s*\{"
+BUILDER_DECL = r"\bbuilders\.(\w+)\s*=\s*\{"
 
 SUBMODULES = r"submodules\s*=\s*true"
 GIT_REV = r"(?:rev|tag)=([^&]+)"

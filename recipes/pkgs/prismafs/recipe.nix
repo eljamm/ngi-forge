@@ -20,7 +20,7 @@ in
       hash = "sha256-eP1z7+r+vzS1Tg7EYYUtNzjhHKwL1/Z9WWfxRelhEIo=";
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
       packages.build = with pkgs; [
         gnumake

@@ -4,7 +4,7 @@
 }:
 {
   pkgs.jaq = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.jaq;
     };

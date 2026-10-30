@@ -10,7 +10,7 @@ in
 
 {
   pkgs.torch-lens-maker = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.python3Packages.torchlensmaker;
     };

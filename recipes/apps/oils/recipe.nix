@@ -6,7 +6,7 @@
 
 {
   pkgs.oils-for-unix = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.oils-for-unix;
     };

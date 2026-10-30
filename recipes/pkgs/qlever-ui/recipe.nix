@@ -17,7 +17,7 @@
       hash = "sha256-DIlmSaRdOJXDj3HvAxnSzmEr6595x9Avcg0jWH9fUuU=";
     };
 
-    build.pythonAppBuilder = {
+    build.builders.python = {
       enable = true;
       packages = {
         build-system = with pkgs.python3Packages; [
@@ -50,12 +50,12 @@
       ];
     };
 
-    build.extraAttrs = {
-      preBuild = ''
+    build.phases = {
+      build.script.pre = ''
         cp -r ${pkgs.qlever-ui-frontend}/. ./backend/static/wasm/
       '';
 
-      postInstall = ''
+      install.script.post = ''
         makeWrapper ${pkgs.python3Packages.gunicorn}/bin/gunicorn \
           $out/bin/qlever-ui \
           --add-flags "qlever.wsgi:application" \

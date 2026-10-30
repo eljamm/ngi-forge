@@ -18,7 +18,7 @@
       hash = "sha256-WrzOTZlceYnFXi5AI5vb+ZDSRoqUDk/yyCdBUWKn0sM=";
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
       packages.build = [
         pkgs.cmake

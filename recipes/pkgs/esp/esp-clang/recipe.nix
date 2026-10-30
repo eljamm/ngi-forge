@@ -18,7 +18,7 @@
       hash = "sha256-bmK/GXO1e1OIqtKBzhRj6VPnCz2N9070Zoxw8x++2mM=";
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
       packages.build = lib.optionals pkgs.stdenv.hostPlatform.isLinux [ pkgs.autoPatchelfHook ];
       packages.run = [

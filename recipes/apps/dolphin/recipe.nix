@@ -6,7 +6,7 @@
 
 {
   pkgs.dolphin = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.kdePackages.dolphin;
     };

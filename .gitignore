@@ -22,7 +22,7 @@ repl-temp-*
 
 ui/src/main.js
 ui/src/options.js
-**/build/
+/ui/build/
 *.qcow2
 *.tar
 .envrc

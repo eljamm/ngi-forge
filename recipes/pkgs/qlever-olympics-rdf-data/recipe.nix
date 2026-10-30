@@ -16,17 +16,17 @@
       hash = "sha256-dY28CQKaMDUUw/pw+p9yX0EtJOnbAAplodMFaedL1B8=";
     };
 
-    build.standardBuilder = {
+    build.builders.standard = {
       enable = true;
       packages.build = with pkgs; [
         unzip
       ];
     };
 
-    build.extraAttrs = {
-      dontBuild = true;
-      dontUnpack = true;
-      installPhase = ''
+    build.phases = {
+      unpack.enable = false;
+      build.enable = false;
+      install.script.main = ''
         unzip $src
         install -D olympics.nt -t $out
       '';

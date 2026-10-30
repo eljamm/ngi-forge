@@ -8,7 +8,7 @@
   pkgs.bottles = {
     # TODO needs unfree packages https://github.com/ngi-nix/forge/pull/1043#issuecomment-6348128062
     broken = true;
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.bottles;
     };

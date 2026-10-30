@@ -8,7 +8,7 @@ let
 in
 {
   pkgs.python3-authlib = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3.pkgs.authlib;
     };

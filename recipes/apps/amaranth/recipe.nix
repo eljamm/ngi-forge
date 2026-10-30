@@ -8,7 +8,7 @@ let
 in
 {
   pkgs.amaranth = {
-    build.identityBuilder = {
+    build.builders.identity = {
       enable = true;
       derivation = pkgs.pkgsOriginal.python3.pkgs.amaranth.overridePythonAttrs (old: {
         pythonRelaxDeps = (old.pythonRelaxDeps or [ ]) ++ [ "pyvcd" ];
