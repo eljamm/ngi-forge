@@ -130,5 +130,8 @@
         lib.mapAttrs (n: v: if n == "__toString" then v else scrubNixContext v) x
       else
         x;
+
+    isBroken =
+      x: lib.attrByPath [ "forge" "broken" ] false x || lib.attrByPath [ "meta" "broken" ] false x;
   };
 }

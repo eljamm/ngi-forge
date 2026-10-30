@@ -1,5 +1,6 @@
 {
   config,
+  forge-lib,
   lib,
   name,
   specialArgs,
@@ -211,6 +212,8 @@
       type = lib.types.bool;
       default = false;
       description = "Whether the app is broken.";
+      # apps that use broken package should also be marked broken
+      apply = self: self || lib.any forge-lib.isBroken (lib.concatLists (lib.attrValues config.packages));
     };
 
     packages = lib.mkOption {
